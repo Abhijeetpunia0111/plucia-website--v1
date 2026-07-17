@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — pulled from the Plucia Figma file.
+  Fonts are loaded via next/font in layout.tsx and exposed as CSS variables.
+*/
+@theme inline {
+  --font-manrope: var(--font-manrope);
+  --font-inter: var(--font-inter);
+  --font-urbanist: var(--font-urbanist);
+  --font-geist: var(--font-geist);
+  --font-dmsans: var(--font-dm-sans);
+  --font-poppins: var(--font-poppins);
+  --font-worksans: var(--font-work-sans);
+  --font-msmadi: var(--font-ms-madi);
+  --font-hand: var(--font-hand);
+
+  --color-ink: #202020;
+  --color-ink-soft: #606060;
+  --color-accent-green: #34a853;
+  --color-surface: #f4f4f4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Hide the native scrollbar everywhere while keeping scroll fully functional. */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge/IE */
+}
+html::-webkit-scrollbar {
+  display: none; /* Chromium/Safari */
+}
+
+/* Reusable on any inner scroll container (e.g. dropdown lists) that should
+   scroll without showing a scrollbar. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background: #ffffff;
+  color: #202020;
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Lenis smooth-scroll recommended styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* "Just Tell Plucia" motion-section animations: rotating cloud/orb rings,
+   light pulses traveling up the connector lines, and a toast-style
+   in/dismiss loop on the top chat notification. Pure CSS so the section can
+   stay a server component. Disabled under prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .orb-cloud-rotate {
+    animation: orb-cloud-spin 16s linear infinite;
+    transform-origin: 50% 50%;
+  }
+
+  .pulse-glow {
+    background-image: linear-gradient(
+      to top,
+      transparent 0%,
+      transparent 40%,
+      rgba(52, 168, 83, 0.9) 47%,
+      #ffffff 50%,
+      rgba(52, 168, 83, 0.9) 53%,
+      transparent 60%,
+      transparent 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 280%;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
+    animation: pulse-travel-up 2.6s ease-in-out infinite;
+  }
+
+  .notif-toast {
+    animation: notif-toast-cycle 4.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+}
+
+@keyframes orb-cloud-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-travel-up {
+  0% {
+    background-position-y: 140%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    background-position-y: -220%;
+    opacity: 0;
+  }
+}
+
+@keyframes notif-toast-cycle {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  12% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  85% {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.97);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.97);
+  }
+}
