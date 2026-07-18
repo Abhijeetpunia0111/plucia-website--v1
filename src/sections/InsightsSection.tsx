@@ -1,10 +1,13 @@
 import ScaleBox from "@/components/ScaleBox";
+import { ParallaxGroup, ParallaxItem } from "@/components/CursorParallax";
 
 /**
  * "Dominate Every sales meeting with Important leads insights" — Figma 2877:21504.
  * A 1445x1568 canvas: header, color blob, and a collage of product cards
  * (map analytics, Sophie contact card, Plucia AI profile summary, LinkedIn
- * company card, call-rating card) joined by dashed lines.
+ * company card, call-rating card) joined by dashed lines. Every collage
+ * element drifts a few px toward the cursor, each with its own strength and
+ * spring speed (CursorParallax).
  */
 
 function MapCard() {
@@ -317,8 +320,9 @@ function CallRatingCard() {
 export default function InsightsSection() {
   return (
     <section className="flex flex-col items-center pt-[100px] lg:pt-[164px] relative w-full">
-      {/* color blob */}
-      <div className="absolute pointer-events-none right-[-320px] size-[560px] top-[150px] lg:left-[875px] lg:right-auto lg:size-[1079.215px] lg:top-[263px]">
+      {/* color blob — sits behind the left half of the collage (Figma 2877:21505).
+          Anchored to the centered 1445px canvas: left = 50% − 722px ≈ canvas x 0. */}
+      <div className="absolute pointer-events-none left-[-240px] size-[560px] top-[220px] lg:left-[calc(50%-722px)] lg:size-[1079.215px] lg:top-[410px]">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="/assets/images/blob-color-1.png" />
       </div>
 
@@ -341,66 +345,94 @@ export default function InsightsSection() {
         </p>
       </div>
 
-      {/* collage — pixel-exact canvas, scaled to fit on small screens */}
+      {/* collage — pixel-exact canvas, scaled to fit on small screens.
+          Each element sits in a ParallaxItem with its own strength/speed so
+          the group drifts toward the cursor at individual rates. */}
       <ScaleBox designWidth={1032.4} designHeight={855.885} className="mt-[44px] max-w-[1032.4px]">
+        <ParallaxGroup className="absolute inset-0">
         {/* dashed connector lines */}
-        <div className="absolute h-[142px] left-[617.41px] top-[623.92px] w-[142.25px]">
-          <div className="absolute inset-[-2.28%_0_-2.3%_0]">
-            <img alt="" className="block max-w-none size-full" src="/assets/icons/insight-line-1.svg" />
+        <ParallaxItem strength={8} speed={0.8}>
+          <div className="absolute h-[142px] left-[617.41px] top-[623.92px] w-[142.25px]">
+            <div className="absolute inset-[-2.28%_0_-2.3%_0]">
+              <img alt="" className="block max-w-none size-full" src="/assets/icons/insight-line-1.svg" />
+            </div>
           </div>
-        </div>
-        <div className="absolute h-[142px] left-[338.3px] top-[428.48px] w-[142.25px]">
-          <div className="absolute inset-[-2.28%_0_-2.3%_0]">
-            <img alt="" className="block max-w-none size-full" src="/assets/icons/insight-line-2.svg" />
+        </ParallaxItem>
+        <ParallaxItem strength={8} speed={1.1}>
+          <div className="absolute h-[142px] left-[338.3px] top-[428.48px] w-[142.25px]">
+            <div className="absolute inset-[-2.28%_0_-2.3%_0]">
+              <img alt="" className="block max-w-none size-full" src="/assets/icons/insight-line-2.svg" />
+            </div>
           </div>
-        </div>
+        </ParallaxItem>
 
         {/* up-selling pill */}
-        <div className="absolute bg-[#f4f4f4] border-[1.984px] border-solid border-white drop-shadow-[0px_0px_8.43px_rgba(0,0,0,0.1)] flex gap-[5.26px] h-[33.315px] items-center left-[661.42px] pl-[4.384px] pr-[12.274px] py-[4.384px] rounded-[10.521px] top-[670.91px] w-[296.466px]">
-          <div className="flex items-center overflow-clip p-[4.384px] relative rounded-[7.89px] shadow-[0px_7.89px_13.151px_0px_rgba(0,0,0,0.08),0px_3.507px_3.507px_0px_rgba(0,0,0,0.12),0px_3.507px_3.507px_0px_rgba(0,0,0,0.02),0px_3.507px_7.014px_0px_rgba(0,0,0,0.05)] shrink-0">
-            <div aria-hidden className="absolute bg-gradient-to-b from-[#292929] inset-0 pointer-events-none rounded-[7.89px] to-[#111]" />
-            <div className="relative shrink-0 size-[15.781px]">
-              <img alt="" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/basket-check.svg" />
+        <ParallaxItem strength={22} speed={1.4}>
+          <div className="absolute bg-[#f4f4f4] border-[1.984px] border-solid border-white drop-shadow-[0px_0px_8.43px_rgba(0,0,0,0.1)] flex gap-[5.26px] h-[33.315px] items-center left-[661.42px] pl-[4.384px] pr-[12.274px] py-[4.384px] rounded-[10.521px] top-[670.91px] w-[296.466px]">
+            <div className="flex items-center overflow-clip p-[4.384px] relative rounded-[7.89px] shadow-[0px_7.89px_13.151px_0px_rgba(0,0,0,0.08),0px_3.507px_3.507px_0px_rgba(0,0,0,0.12),0px_3.507px_3.507px_0px_rgba(0,0,0,0.02),0px_3.507px_7.014px_0px_rgba(0,0,0,0.05)] shrink-0">
+              <div aria-hidden className="absolute bg-gradient-to-b from-[#292929] inset-0 pointer-events-none rounded-[7.89px] to-[#111]" />
+              <div className="relative shrink-0 size-[15.781px]">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/basket-check.svg" />
+              </div>
+              <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_1.753px_3.244px_0px_rgba(255,255,255,0.2),inset_0px_3.507px_7.014px_0px_rgba(0,0,0,0.3),inset_0px_1.753px_1.753px_0px_rgba(0,0,0,0.5)]" />
             </div>
-            <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_1.753px_3.244px_0px_rgba(255,255,255,0.2),inset_0px_3.507px_7.014px_0px_rgba(0,0,0,0.3),inset_0px_1.753px_1.753px_0px_rgba(0,0,0,0.5)]" />
+            <p className="font-inter font-medium leading-[1.5] relative shrink-0 text-[#3d3d3d] text-[14.027px] tracking-[-0.7014px] whitespace-nowrap">
+              Up Selling product based on coverstation
+            </p>
           </div>
-          <p className="font-inter font-medium leading-[1.5] relative shrink-0 text-[#3d3d3d] text-[14.027px] tracking-[-0.7014px] whitespace-nowrap">
-            Up Selling product based on coverstation
-          </p>
-        </div>
+        </ParallaxItem>
 
         {/* linked companies pill */}
-        <div className="absolute bg-[#f4f4f4] border-[1.984px] border-solid border-white drop-shadow-[0px_0px_8.43px_rgba(0,0,0,0.1)] flex h-[50.89px] items-center left-[160.91px] px-[12.446px] py-[4.445px] rounded-[10.521px] top-[471.17px] w-[142.24px]">
-          <p className="flex-[1_0_0] font-inter font-medium leading-[1.5] min-w-px relative text-[#3d3d3d] text-[14.027px] text-center tracking-[-0.7014px]">
-            Linked Companies for more leads
-          </p>
-        </div>
+        <ParallaxItem strength={20} speed={0.9}>
+          <div className="absolute bg-[#f4f4f4] border-[1.984px] border-solid border-white drop-shadow-[0px_0px_8.43px_rgba(0,0,0,0.1)] flex h-[50.89px] items-center left-[160.91px] px-[12.446px] py-[4.445px] rounded-[10.521px] top-[471.17px] w-[142.24px]">
+            <p className="flex-[1_0_0] font-inter font-medium leading-[1.5] min-w-px relative text-[#3d3d3d] text-[14.027px] text-center tracking-[-0.7014px]">
+              Linked Companies for more leads
+            </p>
+          </div>
+        </ParallaxItem>
 
-        <ProfileSummaryCard />
-        <SophieCard />
-        <CallRatingCard />
-        <MapCard />
-        <LinkedInCard />
+        <ParallaxItem strength={14} speed={1.1}>
+          <ProfileSummaryCard />
+        </ParallaxItem>
+        <ParallaxItem strength={10} speed={0.7}>
+          <SophieCard />
+        </ParallaxItem>
+        <ParallaxItem strength={26} speed={1.6}>
+          <CallRatingCard />
+        </ParallaxItem>
+        <ParallaxItem strength={12} speed={0.85}>
+          <MapCard />
+        </ParallaxItem>
+        <ParallaxItem strength={16} speed={1.0}>
+          <LinkedInCard />
+        </ParallaxItem>
 
         {/* chat screenshot */}
-        <div className="absolute border-[2.159px] border-solid border-white h-[122.93px] left-[596.62px] overflow-clip rounded-[8.637px] shadow-[0px_2.879px_14.395px_0px_rgba(0,0,0,0.12)] top-[732.95px] w-[395.279px]">
-          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8.637px] size-full" src="/assets/images/insights-chat.png" />
-        </div>
+        <ParallaxItem strength={18} speed={1.25}>
+          <div className="absolute border-[2.159px] border-solid border-white h-[122.93px] left-[596.62px] overflow-clip rounded-[8.637px] shadow-[0px_2.879px_14.395px_0px_rgba(0,0,0,0.12)] top-[732.95px] w-[395.279px]">
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8.637px] size-full" src="/assets/images/insights-chat.png" />
+          </div>
+        </ParallaxItem>
 
         {/* annotations */}
-        <p className="absolute font-inter font-medium leading-[0] left-[689.34px] not-italic text-[21px] text-black top-[26.8px] tracking-[-1.05px] w-[233.09px]">
-          <span className="font-bold leading-[normal]">Know </span>
-          <span className="leading-[normal]">who you&apos;re speaking to </span>
-          <span className="font-bold leading-[normal]">before</span>
-          <span className="leading-[normal]"> the meeting begins</span>
-        </p>
-        <p className="absolute font-inter font-normal leading-[0] left-[108.56px] not-italic text-[21px] text-black top-[794.42px] tracking-[-1.05px] w-[272.59px]">
-          <span className="leading-[normal]">Giving your team the </span>
-          <span className="font-bold leading-[normal]">confidence</span>
-          <span className="leading-[normal]"> to </span>
-          <span className="font-bold leading-[normal]">sell smarter</span>
-          <span className="leading-[normal]">.</span>
-        </p>
+        <ParallaxItem strength={12} speed={1.0}>
+          <p className="absolute font-inter font-medium leading-[0] left-[689.34px] not-italic text-[21px] text-black top-[26.8px] tracking-[-1.05px] w-[233.09px]">
+            <span className="font-bold leading-[normal]">Know </span>
+            <span className="leading-[normal]">who you&apos;re speaking to </span>
+            <span className="font-bold leading-[normal]">before</span>
+            <span className="leading-[normal]"> the meeting begins</span>
+          </p>
+        </ParallaxItem>
+        <ParallaxItem strength={14} speed={1.2}>
+          <p className="absolute font-inter font-normal leading-[0] left-[108.56px] not-italic text-[21px] text-black top-[794.42px] tracking-[-1.05px] w-[272.59px]">
+            <span className="leading-[normal]">Giving your team the </span>
+            <span className="font-bold leading-[normal]">confidence</span>
+            <span className="leading-[normal]"> to </span>
+            <span className="font-bold leading-[normal]">sell smarter</span>
+            <span className="leading-[normal]">.</span>
+          </p>
+        </ParallaxItem>
+        </ParallaxGroup>
       </ScaleBox>
 
       {/* handwriting sign-off */}

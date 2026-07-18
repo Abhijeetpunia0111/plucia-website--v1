@@ -1,73 +1,13 @@
 import ScaleBox from "@/components/ScaleBox";
+import NotificationCarousel from "@/components/NotificationCarousel";
+import PulseGlow from "@/components/PulseGlow";
 
 /**
  * "Just Tell Plucia What You Need." — Figma 2877:21319.
  * Right side is a dark card holding a "svg motion section": chat notifications,
- * an AI orb, connected lines and channel icons (pulse animation added later).
+ * an AI orb, connected lines and channel icons. All connector pulses share
+ * delay 0 so the three lines fire in perfect sync.
  */
-
-function ChatNotification({
-  avatar,
-  badge,
-  name,
-  time,
-  message,
-  className,
-  scale,
-}: {
-  avatar: string;
-  badge: string;
-  name: string;
-  time: string;
-  message: React.ReactNode;
-  className: string;
-  scale: "sm" | "md" | "lg";
-}) {
-  const s = {
-    sm: { pad: "px-[8.222px] py-[8.985px]", radius: "rounded-[13.386px]", border: "border-[1.03px]", gap: "gap-[11.65px]", av: "size-[27.536px]", avPad: "p-[6.884px]", badgePos: "left-[18.24px] top-[-2.73px] size-[14.899px] p-[2.654px]", wa: "h-[9.499px] w-[9.426px]", name: "text-[12.666px] tracking-[-0.1267px]", time: "text-[9.499px] tracking-[-0.475px]", msg: "text-[11.083px] tracking-[-0.5541px]" },
-    md: { pad: "px-[9.15px] py-[9.999px]", radius: "rounded-[14.897px]", border: "border-[1.146px]", gap: "gap-[12.965px]", av: "size-[30.643px]", avPad: "p-[7.661px]", badgePos: "left-[20.3px] top-[-3.04px] size-[16.58px] p-[2.954px]", wa: "h-[10.572px] w-[10.49px]", name: "text-[14.095px] tracking-[-0.141px]", time: "text-[10.572px] tracking-[-0.5286px]", msg: "text-[12.333px] tracking-[-0.6167px]" },
-    lg: { pad: "px-[10.013px] py-[10.943px]", radius: "rounded-[16.303px]", border: "border-[1.254px]", gap: "gap-[14.188px]", av: "size-[33.536px]", avPad: "p-[8.384px]", badgePos: "left-[22.22px] top-[-3.32px] size-[18.145px] p-[3.233px]", wa: "h-[11.569px] w-[11.48px]", name: "text-[15.426px] tracking-[-0.1543px]", time: "text-[11.569px] tracking-[-0.5785px]", msg: "text-[13.498px] tracking-[-0.6749px]" },
-  }[scale];
-
-  return (
-    <div className={`absolute bg-white ${s.border} border-[rgba(0,0,0,0.1)] border-solid flex items-center ${s.pad} ${s.radius} ${className}`}>
-      <div className={`flex flex-[1_0_0] ${s.gap} items-center min-w-px relative`}>
-        <div className={`relative shrink-0 ${s.av}`}>
-          <div className={`absolute border-[0.766px] border-[rgba(32,32,32,0.01)] border-solid flex items-center left-0 overflow-clip ${s.avPad} rounded-full shadow-[0px_0px_0px_1.532px_rgba(255,255,255,0.8),0px_10.725px_6.129px_0px_rgba(0,0,0,0.05),0px_4.597px_4.597px_0px_rgba(0,0,0,0.09),0px_1.532px_2.298px_0px_rgba(0,0,0,0.1)] ${s.av} top-0`}>
-            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-full size-full" src={avatar} />
-          </div>
-          <div className={`absolute bg-[#34a853] border-[0.943px] border-solid border-white flex items-center justify-center rounded-full ${s.badgePos}`}>
-            <div className={`relative shrink-0 ${s.wa}`}>
-              <img alt="" className="absolute block inset-0 max-w-none size-full" src={badge} />
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-[1_0_0] flex-col gap-[2.643px] items-start justify-center min-w-px not-italic relative">
-          <div className="flex items-center justify-between relative shrink-0 w-full whitespace-nowrap">
-            <p className={`flex-[1_0_0] font-poppins leading-none min-w-px overflow-hidden relative text-black text-ellipsis ${s.name}`}>{name}</p>
-            <p className={`font-inter font-medium leading-[1.5] relative shrink-0 text-[rgba(96,96,96,0.6)] ${s.time}`}>{time}</p>
-          </div>
-          <div className={`font-inter font-medium leading-[1.3] overflow-hidden relative shrink-0 text-[rgba(96,96,96,0.6)] text-ellipsis w-full ${s.msg}`}>{message}</div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/** Light pulse that travels along a connector-line image, masked to its exact shape. */
-function PulseGlow({ src, delay = 0 }: { src: string; delay?: number }) {
-  return (
-    <div
-      aria-hidden
-      className="pulse-glow absolute inset-0 pointer-events-none"
-      style={{
-        maskImage: `url(${src})`,
-        WebkitMaskImage: `url(${src})`,
-        animationDelay: `${delay}s`,
-      }}
-    />
-  );
-}
 
 function ChannelBubble({ left, icon, inset = false }: { left: string; icon: string; inset?: boolean }) {
   return (
@@ -121,7 +61,7 @@ export default function TellPluciaSection() {
               <div className="h-[97.675px] relative w-[201.669px]">
                 <div className="absolute inset-[0_-0.39%]">
                   <img alt="" className="block max-w-none size-full" src="/assets/icons/tell-lines-right.svg" />
-                  <PulseGlow src="/assets/icons/tell-lines-right.svg" delay={0.5} />
+                  <PulseGlow src="/assets/icons/tell-lines-right.svg" delay={0} />
                 </div>
               </div>
             </div>
@@ -131,7 +71,7 @@ export default function TellPluciaSection() {
               <div className="relative size-full">
                 <div className="absolute inset-[-62.51%_0]">
                   <img alt="" className="block max-w-none size-full" src="/assets/icons/tell-line-vertical.svg" />
-                  <PulseGlow src="/assets/icons/tell-line-vertical.svg" delay={1} />
+                  <PulseGlow src="/assets/icons/tell-line-vertical.svg" delay={0} horizontal />
                 </div>
               </div>
             </div>
@@ -174,48 +114,8 @@ export default function TellPluciaSection() {
             </div>
           </div>
 
-          {/* chat notifications stack */}
-          <div className="-translate-x-1/2 absolute h-[105.22px] left-[calc(50%+0.04px)] top-[10.31px] w-[324.909px]">
-            <ChatNotification
-              scale="sm"
-              className="left-[29.07px] top-[43.49px] w-[266.777px] opacity-40"
-              avatar="/assets/images/chat-avatar-1.png"
-              badge="/assets/icons/whatsapp-badge-1.svg"
-              name="Anas"
-              time="3m ago"
-              message={<p className="whitespace-pre-wrap">Wants you to share a sales contract from  with all key details includes</p>}
-            />
-            <ChatNotification
-              scale="md"
-              className="left-[14.02px] top-[19.66px] w-[296.883px]"
-              avatar="/assets/images/chat-avatar-2.png"
-              badge="/assets/icons/whatsapp-badge-2.svg"
-              name="Anari"
-              time="Yesterday"
-              message={<p>Would you send the sales contract from Brightstone Realty with all relevant details?</p>}
-            />
-            <ChatNotification
-              scale="lg"
-              className="notif-toast left-0 top-0 w-[324.909px] overflow-clip shadow-[0px_0px_50.164px_2.508px_rgba(0,0,0,0.1)]"
-              avatar="/assets/images/chat-avatar-3.png"
-              badge="/assets/icons/whatsapp-badge-3.svg"
-              name="John"
-              time="15m ago"
-              message={
-                <>
-                  <p className="leading-[1.3] mb-0">Yes! The community includes:</p>
-                  <p className="leading-[1.3]">• Clubhouse</p>
-                </>
-              }
-            />
-          </div>
-
-          {/* unread badge — animates in sync with the John notification card */}
-          <div className="notif-toast absolute bg-[#ff2f2f] flex flex-col items-center justify-center left-[382.7px] p-[4.979px] rounded-[3.984px] top-0 w-[27.959px]">
-            <div className="flex flex-col font-inter font-semibold justify-center leading-[0] relative shrink-0 text-[14.562px] text-center text-white w-full whitespace-nowrap">
-              <p className="leading-[1.5]">74</p>
-            </div>
-          </div>
+          {/* chat notifications — infinite 3-card carousel (front swipes right + toast) */}
+          <NotificationCarousel />
 
           {/* AI orb */}
           <div className="-translate-x-1/2 absolute flex items-center left-[calc(50%+2.81px)] top-[241.06px]">

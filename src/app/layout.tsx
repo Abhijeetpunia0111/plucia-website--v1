@@ -46,7 +46,7 @@ export default function RootLayout({
       lang="en"
       className={`${manrope.variable} ${inter.variable} ${urbanist.variable} ${geist.variable} ${dmSans.variable} ${poppins.variable} ${workSans.variable} ${msMadi.variable} ${caveat.variable}`}
     >
-      <body>
+      <body suppressHydrationWarning>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

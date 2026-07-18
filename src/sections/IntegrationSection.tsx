@@ -1,9 +1,13 @@
 import ScaleBox from "@/components/ScaleBox";
+import PulseGlow from "@/components/PulseGlow";
 
 /**
  * Integration — "Everything Your Team Needs in One Platform" — Figma 2877:22158.
  * A "svg motion section": eight curved wires converge from the app icons into
- * the central AI button (light-pulse animation to be layered on later).
+ * the central AI button. Every wire carries a light pulse sweeping local
+ * left→right with delay 0 — the right-side wires are horizontally mirrored,
+ * so on screen the pulses enter from both edges and meet at the center in
+ * perfect sync.
  */
 
 const WIRES = [
@@ -64,7 +68,9 @@ export default function IntegrationSection() {
         </div>
       </div>
 
-      {/* wires */}
+      {/* wires — pulses sweep local left→right on every wire; mirrored right
+          wires flip that to right→left on screen, so both sides converge on
+          the center simultaneously (shared duration, delay 0) */}
       {WIRES.map((wire, i) =>
         wire.mirror ? (
           <div key={i} className={`absolute flex ${wire.h} items-center justify-center ${wire.left} ${wire.top} ${wire.w}`}>
@@ -72,6 +78,7 @@ export default function IntegrationSection() {
               <div className={`${wire.h} relative ${wire.w}`}>
                 <div className={`absolute ${wire.inset}`}>
                   <img alt="" className="block max-w-none size-full" src={wire.src} />
+                  <PulseGlow src={wire.src} horizontal />
                 </div>
               </div>
             </div>
@@ -80,6 +87,7 @@ export default function IntegrationSection() {
           <div key={i} className={`absolute ${wire.h} ${wire.left} ${wire.top} ${wire.w}`}>
             <div className={`absolute ${wire.inset}`}>
               <img alt="" className="block max-w-none size-full" src={wire.src} />
+              <PulseGlow src={wire.src} horizontal />
             </div>
           </div>
         )

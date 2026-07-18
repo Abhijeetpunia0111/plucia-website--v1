@@ -39,7 +39,7 @@ export default function HeroComposer() {
   const activeChannel = CHANNELS.find((c) => c.id === channel);
 
   return (
-    <div className="bg-[rgba(250,248,246,0.4)] border-2 border-solid border-white flex flex-col h-[158px] items-start justify-between overflow-visible p-[20px] rounded-[24px] shadow-[0px_32px_32px_-20px_rgba(51,51,51,0.16),0px_16px_16px_-8px_rgba(51,51,51,0.08),0px_8px_8px_-4px_rgba(51,51,51,0.04)] w-full max-w-[553px] mx-auto transition-[max-width,box-shadow] duration-300 ease-out focus-within:max-w-[583px] hover:ring-2 hover:ring-white hover:shadow-[0px_32px_32px_-20px_rgba(51,51,51,0.22),0px_16px_16px_-8px_rgba(51,51,51,0.12),0px_8px_8px_-4px_rgba(51,51,51,0.07)] focus-within:ring-2 focus-within:ring-white focus-within:shadow-[0px_36px_36px_-20px_rgba(51,51,51,0.3),0px_18px_18px_-8px_rgba(51,51,51,0.17),0px_8px_8px_-4px_rgba(51,51,51,0.1)]">
+    <div className="bg-[rgba(250,248,246,0.4)] border-2 border-solid border-white flex flex-col h-[158px] items-start justify-between overflow-visible p-[20px] rounded-[24px] shadow-[0px_32px_32px_-20px_rgba(51,51,51,0.16),0px_16px_16px_-8px_rgba(51,51,51,0.08),0px_8px_8px_-4px_rgba(51,51,51,0.04)] w-full max-w-[553px] mx-auto origin-center scale-[0.98] opacity-90 transition-[max-width,box-shadow,transform,opacity] duration-300 ease-out hover:max-w-[593px] hover:scale-[1.01] hover:opacity-100 hover:ring-2 hover:ring-white hover:shadow-[0px_32px_32px_-20px_rgba(51,51,51,0.22),0px_16px_16px_-8px_rgba(51,51,51,0.12),0px_8px_8px_-4px_rgba(51,51,51,0.07)]">
       <div className="flex h-[59px] items-center justify-center relative shrink-0 w-full">
         <input
           value={text}

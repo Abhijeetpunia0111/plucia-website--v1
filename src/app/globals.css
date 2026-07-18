@@ -71,10 +71,12 @@ html.lenis body {
   overflow: hidden;
 }
 
-/* "Just Tell Plucia" motion-section animations: rotating cloud/orb rings,
-   light pulses traveling up the connector lines, and a toast-style
-   in/dismiss loop on the top chat notification. Pure CSS so the section can
-   stay a server component. Disabled under prefers-reduced-motion. */
+/* "Just Tell Plucia" motion-section animations: rotating cloud/orb rings and
+   light pulses traveling up the connector lines. Pure CSS so the parts of
+   the section that only need these stay server components. The chat
+   notification carousel (swipe-out + toast) lives in
+   components/NotificationCarousel.tsx since it needs real state/timers.
+   Disabled under prefers-reduced-motion. */
 @media (prefers-reduced-motion: no-preference) {
   .orb-cloud-rotate {
     animation: orb-cloud-spin 16s linear infinite;
@@ -85,24 +87,56 @@ html.lenis body {
     background-image: linear-gradient(
       to top,
       transparent 0%,
-      transparent 40%,
-      rgba(52, 168, 83, 0.9) 47%,
+      rgba(249, 115, 22, 0.95) 22%,
+      #ffffff 38%,
       #ffffff 50%,
-      rgba(52, 168, 83, 0.9) 53%,
-      transparent 60%,
+      rgba(249, 115, 22, 0.95) 66%,
+      transparent 88%,
       transparent 100%
     );
     background-repeat: no-repeat;
-    background-size: 100% 280%;
+    background-size: 100% 165%;
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
     mask-size: 100% 100%;
     -webkit-mask-size: 100% 100%;
-    animation: pulse-travel-up 2.6s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 1)) drop-shadow(0 0 14px rgba(249, 115, 22, 0.75));
+    animation: pulse-travel-up 3.6s ease-in-out infinite;
   }
 
-  .notif-toast {
-    animation: notif-toast-cycle 4.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  /* Variant for pulse hosts living inside a -rotate-90 wrapper (the center
+     vertical line): sweep along local X, which the rotation maps to screen
+     bottom→top. */
+  .pulse-glow-h {
+    background-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(249, 115, 22, 0.95) 22%,
+      #ffffff 38%,
+      #ffffff 50%,
+      rgba(249, 115, 22, 0.95) 66%,
+      transparent 88%,
+      transparent 100%
+    );
+    background-size: 165% 100%;
+    animation-name: pulse-travel-right;
+  }
+}
+
+/* Integrations logo marquee — track holds two copies of the logo row and
+   slides left by half its width, looping seamlessly right→left. */
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: marquee-scroll 32s linear infinite;
+  }
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -117,40 +151,36 @@ html.lenis body {
 
 @keyframes pulse-travel-up {
   0% {
-    background-position-y: 140%;
+    background-position-y: -160%;
     opacity: 0;
   }
-  10% {
+  8% {
     opacity: 1;
   }
-  80% {
+  92% {
     opacity: 1;
   }
   100% {
-    background-position-y: -220%;
+    background-position-y: 130%;
     opacity: 0;
   }
 }
 
-@keyframes notif-toast-cycle {
+/* local left→right; inside the -rotate-90 wrapper this reads bottom→top */
+@keyframes pulse-travel-right {
   0% {
+    background-position-x: 130%;
     opacity: 0;
-    transform: translateY(14px) scale(0.96);
   }
-  12% {
+  8% {
     opacity: 1;
-    transform: translateY(0) scale(1);
   }
-  70% {
+  92% {
     opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  85% {
-    opacity: 0;
-    transform: translateY(-18px) scale(0.97);
   }
   100% {
+    background-position-x: -160%;
     opacity: 0;
-    transform: translateY(-18px) scale(0.97);
   }
 }
+

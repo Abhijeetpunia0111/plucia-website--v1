@@ -1,67 +1,94 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import AvatarGroup from "@/components/AvatarGroup";
 import HeroComposer from "@/components/HeroComposer";
 import TryYourselfLabel from "@/components/TryYourselfLabel";
 import DashboardShowcase from "@/components/DashboardShowcase";
 
-/**
- * Hero — Figma "Background" (2877:21184) + headline + dashboard image.
- * The pastel gradient backdrop is the "svg motion section" frame (light-pulse
- * animation to be added later — see design.md).
- *
- * The backdrop is a full-bleed layer that stretches to the actual viewport
- * width. The foreground content flows inside a centered, padded canvas that
- * matches the Figma 1440px frame on desktop and reflows fluidly below it.
- *
- * The navbar itself is rendered as a sticky <header> one level up (HomePage);
- * this section is pulled up underneath it with a negative top margin so the
- * gradient backdrop keeps sitting behind the floating navbar card.
- */
+type HeroBounds = { height: number; horizontalInset: number; topInset: number };
+
+function getHeroBounds(): HeroBounds {
+  const width = window.innerWidth;
+  if (width >= 1024) return { height: 942, horizontalInset: 29, topInset: 14 };
+  if (width >= 640) return { height: 780, horizontalInset: 29, topInset: 14 };
+  return { height: 640, horizontalInset: 16, topInset: 8 };
+}
+
 export default function Hero() {
+  const reduceMotion = useReducedMotion();
+  const [bounds, setBounds] = useState<HeroBounds | null>(null);
+  const [hasEntered, setHasEntered] = useState(false);
+  const entrance = reduceMotion ? false : { opacity: 0, scale: 0.95, y: 20 };
+  const settled = { opacity: 1, scale: 1, y: 0 };
+  const reveal = (delay: number, duration: number) => ({ duration, delay, ease: [0.16, 1, 0.3, 1] as const });
+  const contentAnimation = hasEntered || reduceMotion ? settled : entrance;
+
+  useEffect(() => {
+    const updateBounds = () => setBounds(getHeroBounds());
+    updateBounds();
+    window.addEventListener("resize", updateBounds);
+    return () => window.removeEventListener("resize", updateBounds);
+  }, []);
+
+  const backdropInitial = {
+    width: "min(300px, calc(100vw - 32px))",
+    height: 40,
+    borderRadius: 999,
+    x: "-50%",
+    y: "-50%",
+  };
+
+  const backdropFinal = bounds && {
+    width: `calc(100% - ${bounds.horizontalInset}px)`,
+    height: bounds.height,
+    borderRadius: 24,
+    x: "-50%",
+    y: 0,
+    top: bounds.topInset,
+  };
+
   return (
     <section className="relative w-full overflow-clip -mt-[82px] sm:-mt-[94px]">
-      {/* Full-bleed background canvas — stretches with the viewport */}
-      <div className="absolute inset-x-[8px] sm:inset-x-[14.5px] top-[8px] sm:top-[13.6px] h-[640px] sm:h-[780px] lg:h-[942px] overflow-clip rounded-[24px] bg-[#eaeaea]">
-        <img
-          data-motion-section="hero"
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-80 pointer-events-none"
-          src="/assets/images/hero-motion-bg.png"
-        />
-      </div>
+      <motion.div
+        className={`${hasEntered || reduceMotion ? "absolute" : "fixed"} left-1/2 ${hasEntered || reduceMotion ? "" : "top-1/2"} z-0 overflow-clip bg-[#eaeaea] will-change-[transform,width,height,border-radius]`}
+        initial={reduceMotion ? false : backdropInitial}
+        animate={backdropFinal ?? false}
+        transition={{ duration: 1.35, ease: [0.45, 0, 0.15, 1] }}
+        onAnimationComplete={() => {
+          if (bounds && !reduceMotion) setHasEntered(true);
+        }}
+      >
+        <video data-motion-section="hero" className="absolute inset-0 h-full w-full object-cover pointer-events-none" src="/assets/video/background video.mp4" autoPlay loop muted playsInline preload="auto" />
+        <div aria-hidden className="absolute inset-0 bg-[#fefefe]/60 pointer-events-none" />
+      </motion.div>
 
-      {/* Content canvas (matches the Figma 1440px frame on desktop).
-          Top padding clears the sticky navbar that floats above this section. */}
       <div className="relative mx-auto w-full max-w-[1440px] px-[20px] sm:px-[48px] xl:px-[152px] pt-[150px] sm:pt-[178px] lg:pt-[clamp(150px,17vh,218px)]">
-        {/* Headline */}
-        <div className="flex flex-col gap-[24px] items-center mx-auto w-full max-w-[725px]">
+        <motion.div className="flex flex-col gap-[24px] items-center mx-auto w-full max-w-[725px]" initial={entrance} animate={contentAnimation} transition={reveal(0.06, 1.1)}>
           <div className="flex flex-col gap-[4px] items-center relative shrink-0 w-full">
             <AvatarGroup />
-            <p className="font-manrope font-semibold leading-[normal] relative shrink-0 text-[clamp(34px,6vw,50px)] text-black text-center tracking-[-0.05em] w-full">
-              Meet Your AI Business Operator.
-            </p>
+            <p className="font-manrope font-semibold leading-[normal] relative shrink-0 text-[clamp(34px,6vw,50px)] text-black text-center tracking-[-0.05em] w-full">Meet Your AI Business Operator.</p>
           </div>
           <div className="font-inter font-normal leading-[0] relative shrink-0 text-[#202020] text-[16px] sm:text-[18px] text-center tracking-[-0.05em] w-full max-w-[544px]">
             <p className="leading-[normal] mb-0">Understands buyer intent, detects opportunities, engages.</p>
             <p className="leading-[normal]">and your sales pipeline keeps moving.</p>
           </div>
-        </div>
+        </motion.div>
 
-        {/* prompt input field + "Try Yourself" handwriting label.
-            max-w is 30px wider than the composer's resting 553px so it has room
-            to grow on focus (see HeroComposer focus-within:max-w). */}
-        <div className="relative z-20 mx-auto mt-[56px] lg:mt-[clamp(48px,7vh,84px)] w-full max-w-[583px]">
+        <motion.div className="relative z-20 mx-auto mt-[56px] lg:mt-[clamp(48px,7vh,84px)] w-full max-w-[583px]" initial={entrance} animate={contentAnimation} transition={reveal(0.12, 1.05)}>
           <HeroComposer />
           <TryYourselfLabel />
-        </div>
+        </motion.div>
 
-        {/* Dashboard screenshot — scroll-linked pan/zoom-in */}
-        <DashboardShowcase />
+        <motion.div initial={entrance} animate={contentAnimation} transition={reveal(0.18, 1.15)}>
+          <DashboardShowcase />
+        </motion.div>
 
-        {/* Caption under the dashboard */}
-        <div className="font-inter font-normal leading-[0] mx-auto mt-[40px] lg:mt-[68px] pb-[8px] text-[#202020] text-[16px] sm:text-[18px] text-center tracking-[-0.05em] w-full max-w-[544px]">
+        <motion.div className="font-inter font-normal leading-[0] mx-auto mt-[40px] lg:mt-[68px] pb-[8px] text-[#202020] text-[16px] sm:text-[18px] text-center tracking-[-0.05em] w-full max-w-[544px]" initial={entrance} animate={contentAnimation} transition={reveal(0.24, 1.0)}>
           <p className="leading-[normal] mb-0">Understands buyer intent, detects opportunities, engages.</p>
           <p className="leading-[normal]">and your sales pipeline keeps moving.</p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
