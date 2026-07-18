@@ -1,3 +1,5 @@
+"use client";
+
 export default function Navbar() {
   return (
     <div className="bg-white border border-[rgba(0,0,0,0.05)] border-solid drop-shadow-[0px_4px_11px_rgba(0,0,0,0.15)] flex items-center justify-between p-[10px] relative rounded-[12px] w-full">
@@ -23,7 +25,6 @@ export default function Navbar() {
             className="absolute inset-0 pointer-events-none rounded-[8px]"
             style={{ backgroundImage: "linear-gradient(-5.99027deg, rgb(7, 7, 7) 12.103%, rgb(47, 46, 49) 87.897%)" }}
           />
-          {/* light sweep — glides left→right across the button on hover */}
           <span
             aria-hidden
             className="pointer-events-none absolute inset-y-0 left-0 w-[45%] -translate-x-[160%] skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[260%]"

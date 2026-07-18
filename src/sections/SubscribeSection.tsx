@@ -64,18 +64,16 @@ export default function SubscribeSection() {
                   className="bg-transparent font-inter font-medium leading-[1.5] outline-none placeholder:text-[rgba(32,32,32,0.5)] relative text-[16px] text-[#202020] tracking-[-0.8px] w-full"
                 />
               </div>
-              <button className="flex gap-[10px] h-full items-center justify-center overflow-clip px-[20px] py-[10px] relative rounded-bl-[8px] rounded-br-[14px] rounded-tl-[8px] rounded-tr-[14px] shrink-0 cursor-pointer">
-                <div aria-hidden className="absolute bg-[#202020] inset-0 pointer-events-none rounded-bl-[8px] rounded-br-[14px] rounded-tl-[8px] rounded-tr-[14px]" />
-                <div className="-translate-y-1/2 absolute flex h-[105.181px] items-center justify-center right-[-17.33px] top-[calc(50%+4.58px)] w-[78.659px]">
-                  <div className="flex-none rotate-[125deg]">
-                    <div className="bg-[rgba(255,255,255,0.12)] blur-[7.5px] h-[12px] relative rounded-[100px] w-[120px]" />
-                  </div>
-                </div>
-                <div className="-translate-y-1/2 absolute flex h-[105.181px] items-center justify-center right-[92.67px] top-[calc(50%+4.58px)] w-[78.659px]">
-                  <div className="flex-none rotate-[125deg]">
-                    <div className="bg-[rgba(255,255,255,0.12)] blur-[7.5px] h-[12px] relative rounded-[100px] w-[120px]" />
-                  </div>
-                </div>
+              <button className="group flex gap-[10px] h-full items-center justify-center overflow-clip px-[20px] py-[10px] relative rounded-bl-[8px] rounded-br-[14px] rounded-tl-[8px] rounded-tr-[14px] shrink-0 cursor-pointer transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0px_0px_0px_0.8px_#161616,0px_10px_10px_-3px_rgba(0,0,0,0.22),0px_18px_18px_-3px_rgba(0,0,0,0.2),0px_36px_34px_-4px_rgba(0,0,0,0.12)]">
+                <div
+                  aria-hidden
+                  className="absolute inset-0 pointer-events-none rounded-bl-[8px] rounded-br-[14px] rounded-tl-[8px] rounded-tr-[14px]"
+                  style={{ backgroundImage: "linear-gradient(-5.99027deg, rgb(7, 7, 7) 12.103%, rgb(47, 46, 49) 87.897%)" }}
+                />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-y-0 left-0 w-[45%] -translate-x-[160%] skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[260%]"
+                />
                 <div className="relative shrink-0 size-[20px]">
                   <img alt="" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/mail-send-01.svg" />
                 </div>

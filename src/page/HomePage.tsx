@@ -37,8 +37,8 @@ export default function HomePage() {
         <Reveal><TellPluciaSection /></Reveal>
         <Reveal><CalendarSection /></Reveal>
         <Reveal><InsightsSection /></Reveal>
-        <Reveal><IntegrationSection /></Reveal>
         <Reveal><FeaturesSection /></Reveal>
+        <Reveal><IntegrationSection /></Reveal>
         <Reveal><FaqSection /></Reveal>
       </div>
       <Reveal><SubscribeSection /></Reveal>
