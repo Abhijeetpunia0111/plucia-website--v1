@@ -1,4 +1,5 @@
 import AvatarGroup from "@/components/AvatarGroup";
+import DistortText from "@/components/DistortText";
 
 /** "Be The Part of the Future Before Everyone" — Figma 2877:22890 */
 export default function SubscribeSection() {
@@ -46,7 +47,7 @@ export default function SubscribeSection() {
       <div className="relative flex flex-col gap-[50px] items-center px-[20px] w-full max-w-[601px]">
         <div className="flex flex-col gap-[8px] items-start relative shrink-0 text-[#fefefe] text-center w-full">
           <p className="font-manrope font-semibold leading-[0] relative shrink-0 text-[clamp(30px,7vw,48px)] tracking-[-0.02em] w-full">
-            <span className="leading-[normal]">Be The Part of the Future Before </span>
+            <span className="leading-[normal]"><DistortText text="Be The Part of the Future Before" /> </span>
             <span className="font-msmadi font-normal leading-[normal] not-italic">Everyone</span>
           </p>
           <p className="font-inter font-normal leading-[normal] relative shrink-0 text-[16px] sm:text-[18px] tracking-[-0.05em] w-full">

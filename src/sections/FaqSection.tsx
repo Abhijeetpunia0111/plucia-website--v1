@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import DistortText from "@/components/DistortText";
 
 /** "General Question asked by Everyone" — Figma 2877:22869 */
 
@@ -38,7 +39,7 @@ export default function FaqSection() {
           </div>
           <div className="flex flex-col items-start justify-center relative shrink-0 w-full">
             <div className="flex flex-col font-manrope font-semibold justify-center leading-[0] relative shrink-0 text-[#1d1d1d] text-[clamp(30px,5vw,48px)] tracking-[-0.031em] w-full">
-              <p className="leading-[1]">General Question asked by Everyone</p>
+              <p className="leading-[1]"><DistortText text="General Question asked by Everyone" /></p>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import AvatarGroup from "@/components/AvatarGroup";
+import DistortText from "@/components/DistortText";
 import HeroComposer from "@/components/HeroComposer";
 import TryYourselfLabel from "@/components/TryYourselfLabel";
 import DashboardShowcase from "@/components/DashboardShowcase";
@@ -68,7 +69,9 @@ export default function Hero() {
         <motion.div className="flex flex-col gap-[24px] items-center mx-auto w-full max-w-[725px]" initial={entrance} animate={contentAnimation} transition={reveal(0.06, 1.1)}>
           <div className="flex flex-col gap-[4px] items-center relative shrink-0 w-full">
             <AvatarGroup />
-            <p className="font-manrope font-semibold leading-[normal] relative shrink-0 text-[clamp(34px,6vw,50px)] text-black text-center tracking-[-0.05em] w-full">Meet Your AI Business Operator.</p>
+            <p className="font-manrope font-semibold leading-[normal] relative shrink-0 text-[clamp(34px,6vw,50px)] text-black text-center tracking-[-0.05em] w-full">
+              <DistortText text="Meet Your AI Business Operator." />
+            </p>
           </div>
           <div className="font-inter font-normal leading-[0] relative shrink-0 text-[#202020] text-[16px] sm:text-[18px] text-center tracking-[-0.05em] w-full max-w-[544px]">
             <p className="leading-[normal] mb-0">Understands buyer intent, detects opportunities, engages.</p>

@@ -1,4 +1,5 @@
 import ScaleBox from "@/components/ScaleBox";
+import DistortText from "@/components/DistortText";
 import { AnalyticsTooltip, LiveBar, LiveChart } from "@/components/AnalyticsLive";
 import { FocusCard, FocusGroup } from "@/components/FocusTiltCards";
 import CallVoiceLive from "@/components/CallVoiceLive";
@@ -35,7 +36,7 @@ export default function FeaturesSection() {
           </div>
           <div className="[word-break:break-word] content-stretch flex flex-col gap-[16px] items-center justify-center leading-[0] relative shrink-0 text-center">
             <div className="flex flex-col font-manrope font-semibold justify-center relative shrink-0 text-[#1d1d1d] text-[clamp(30px,5vw,48px)] tracking-[-0.031em] w-full max-w-[723.521px]">
-              <p className="leading-[1]">Powerful AI Features That Drive Your Business</p>
+              <p className="leading-[1]"><DistortText text="Powerful AI Features That Drive Your Business" /></p>
             </div>
             <div className="flex flex-col font-manrope font-medium justify-center relative shrink-0 text-[#5c5c5c] text-[16px] sm:text-[18px] tracking-[-0.033em] w-full max-w-[520.032px]">
               <p className="leading-[24px]">Powerful AI tools that automate the heavy lifting, so your team can focus on growing the business.</p>

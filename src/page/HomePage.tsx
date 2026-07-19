@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
+import VelocitySkew from "@/components/VelocitySkew";
 import Hero from "@/sections/Hero";
 import IntegrationsMarquee from "@/sections/IntegrationsMarquee";
 import PlatformSection from "@/sections/PlatformSection";
@@ -32,16 +33,18 @@ export default function HomePage() {
       </header>
       <Hero />
       <IntegrationsMarquee />
-      <div className="max-w-[1440px] mx-auto relative w-full">
-        <Reveal><PlatformSection /></Reveal>
+      <VelocitySkew className="max-w-[1440px] mx-auto relative w-full space-y-[88px]">
         <Reveal><TellPluciaSection /></Reveal>
         <Reveal><CalendarSection /></Reveal>
+        <Reveal><PlatformSection /></Reveal>
         <Reveal><InsightsSection /></Reveal>
         <Reveal><FeaturesSection /></Reveal>
         <Reveal><IntegrationSection /></Reveal>
         <Reveal><FaqSection /></Reveal>
+      </VelocitySkew>
+      <div className="mt-[88px]">
+        <Reveal><SubscribeSection /></Reveal>
       </div>
-      <Reveal><SubscribeSection /></Reveal>
       <Footer />
     </main>
   );

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
+import DistortText from "@/components/DistortText";
 
 /**
  * "From Conversation to Calendar, Automatically." — Figma 2877:21314.
@@ -45,7 +46,7 @@ export default function CalendarSection() {
       </div>
       <div className="relative flex flex-col gap-[20px] lg:gap-[28px] items-start leading-[normal] mx-auto px-[20px] w-full max-w-[598px] lg:absolute lg:left-[771.05px] lg:top-[215.66px] lg:mx-0 lg:px-0 lg:w-[558px] lg:max-w-none">
         <p className="font-manrope font-semibold relative shrink-0 text-[clamp(32px,5vw,50px)] text-black tracking-[-0.05em] w-full">
-          From Conversation to Calendar, Automatically.
+          <DistortText text="From Conversation to Calendar, Automatically." />
         </p>
         <p className="font-inter font-normal relative shrink-0 text-[17px] sm:text-[21px] text-[#202020] tracking-[-0.05em] w-full">
           Plucia qualifies leads, handles follow-ups, answers questions, and schedules meetings when prospects are ready keeping your pipeline moving while your team focuses on closing deals.

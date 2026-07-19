@@ -1,4 +1,5 @@
 import ScaleBox from "@/components/ScaleBox";
+import DistortText from "@/components/DistortText";
 import { ParallaxGroup, ParallaxItem } from "@/components/CursorParallax";
 
 /**
@@ -7,7 +8,8 @@ import { ParallaxGroup, ParallaxItem } from "@/components/CursorParallax";
  * (map analytics, Sophie contact card, Plucia AI profile summary, LinkedIn
  * company card, call-rating card) joined by dashed lines. Every collage
  * element drifts a few px toward the cursor, each with its own strength and
- * spring speed (CursorParallax).
+ * spring speed (CursorParallax), and floats up/down on scroll at its own
+ * rate and direction (scrollDepth) for a layered depth effect.
  */
 
 function MapCard() {
@@ -319,7 +321,7 @@ function CallRatingCard() {
 
 export default function InsightsSection() {
   return (
-    <section className="flex flex-col items-center pt-[100px] lg:pt-[164px] relative w-full">
+    <section className="flex flex-col items-center pt-[100px] lg:pt-[124px] relative w-full">
       {/* color blob — sits behind the left half of the collage (Figma 2877:21505).
           Anchored to the centered 1445px canvas: left = 50% − 722px ≈ canvas x 0. */}
       <div className="absolute pointer-events-none left-[-240px] size-[560px] top-[220px] lg:left-[calc(50%-722px)] lg:size-[1079.215px] lg:top-[410px]">
@@ -336,11 +338,11 @@ export default function InsightsSection() {
             Exclusive  Insights  by Plucia AI
           </p>
         </div>
-        <p className="font-manrope leading-[0] not-italic relative shrink-0 text-[clamp(30px,5vw,48px)] text-black text-center tracking-[-0.0133em] w-full">
-          <span className="font-normal leading-[normal]">Dominate Every sales meeting with </span>
-          <span className="font-bold leading-[normal]">Important leads insights</span>
+        <p className="font-manrope leading-[0] not-italic relative shrink-0 text-[clamp(25px,5vw,43px)] text-black text-center tracking-[-0.0133em] w-full">
+          <span className="font-normal leading-[normal]"><DistortText text="Dominate Every sales meeting with" baseWeight={400} weightShift={250} /> </span>
+          <span className="font-bold leading-[normal]"><DistortText text="Important leads insights" baseWeight={700} weightShift={100} /></span>
         </p>
-        <p className="font-inter font-normal leading-[normal] not-italic relative shrink-0 text-[#606060] text-[17px] sm:text-[21px] text-center tracking-[-0.05em] w-full">
+        <p className="font-inter font-normal leading-[normal] not-italic relative shrink-0 text-[#606060] text-[12px] sm:text-[16px] text-center tracking-[-0.05em] w-full">
           Before every meeting, Plucia builds a complete intelligence brief by combining conversations, CRM activity, LinkedIn profiles, company data, buying signals, recent news, and behavioral insights—so your team walks in prepared to close.
         </p>
       </div>
@@ -348,17 +350,17 @@ export default function InsightsSection() {
       {/* collage — pixel-exact canvas, scaled to fit on small screens.
           Each element sits in a ParallaxItem with its own strength/speed so
           the group drifts toward the cursor at individual rates. */}
-      <ScaleBox designWidth={1032.4} designHeight={855.885} className="mt-[44px] max-w-[1032.4px]">
+      <ScaleBox designWidth={1032.4} designHeight={855.885} className="mt-[54px] max-w-[1032.4px]">
         <ParallaxGroup className="absolute inset-0">
         {/* dashed connector lines */}
-        <ParallaxItem strength={8} speed={0.8}>
+        <ParallaxItem strength={8} speed={0.8} scrollDepth={20}>
           <div className="absolute h-[142px] left-[617.41px] top-[623.92px] w-[142.25px]">
             <div className="absolute inset-[-2.28%_0_-2.3%_0]">
               <img alt="" className="block max-w-none size-full" src="/assets/icons/insight-line-1.svg" />
             </div>
           </div>
         </ParallaxItem>
-        <ParallaxItem strength={8} speed={1.1}>
+        <ParallaxItem strength={8} speed={1.1} scrollDepth={-20}>
           <div className="absolute h-[142px] left-[338.3px] top-[428.48px] w-[142.25px]">
             <div className="absolute inset-[-2.28%_0_-2.3%_0]">
               <img alt="" className="block max-w-none size-full" src="/assets/icons/insight-line-2.svg" />
@@ -367,7 +369,7 @@ export default function InsightsSection() {
         </ParallaxItem>
 
         {/* up-selling pill */}
-        <ParallaxItem strength={22} speed={1.4}>
+        <ParallaxItem strength={22} speed={1.4} scrollDepth={55}>
           <div className="absolute bg-[#f4f4f4] border-[1.984px] border-solid border-white drop-shadow-[0px_0px_8.43px_rgba(0,0,0,0.1)] flex gap-[5.26px] h-[33.315px] items-center left-[661.42px] pl-[4.384px] pr-[12.274px] py-[4.384px] rounded-[10.521px] top-[670.91px] w-[296.466px]">
             <div className="flex items-center overflow-clip p-[4.384px] relative rounded-[7.89px] shadow-[0px_7.89px_13.151px_0px_rgba(0,0,0,0.08),0px_3.507px_3.507px_0px_rgba(0,0,0,0.12),0px_3.507px_3.507px_0px_rgba(0,0,0,0.02),0px_3.507px_7.014px_0px_rgba(0,0,0,0.05)] shrink-0">
               <div aria-hidden className="absolute bg-gradient-to-b from-[#292929] inset-0 pointer-events-none rounded-[7.89px] to-[#111]" />
@@ -383,7 +385,7 @@ export default function InsightsSection() {
         </ParallaxItem>
 
         {/* linked companies pill */}
-        <ParallaxItem strength={20} speed={0.9}>
+        <ParallaxItem strength={20} speed={0.9} scrollDepth={-40}>
           <div className="absolute bg-[#f4f4f4] border-[1.984px] border-solid border-white drop-shadow-[0px_0px_8.43px_rgba(0,0,0,0.1)] flex h-[50.89px] items-center left-[160.91px] px-[12.446px] py-[4.445px] rounded-[10.521px] top-[471.17px] w-[142.24px]">
             <p className="flex-[1_0_0] font-inter font-medium leading-[1.5] min-w-px relative text-[#3d3d3d] text-[14.027px] text-center tracking-[-0.7014px]">
               Linked Companies for more leads
@@ -391,31 +393,31 @@ export default function InsightsSection() {
           </div>
         </ParallaxItem>
 
-        <ParallaxItem strength={14} speed={1.1}>
+        <ParallaxItem strength={14} speed={1.1} scrollDepth={45}>
           <ProfileSummaryCard />
         </ParallaxItem>
-        <ParallaxItem strength={10} speed={0.7}>
+        <ParallaxItem strength={10} speed={0.7} scrollDepth={-30}>
           <SophieCard />
         </ParallaxItem>
-        <ParallaxItem strength={26} speed={1.6}>
+        <ParallaxItem strength={26} speed={1.6} scrollDepth={70}>
           <CallRatingCard />
         </ParallaxItem>
-        <ParallaxItem strength={12} speed={0.85}>
+        <ParallaxItem strength={12} speed={0.85} scrollDepth={-50}>
           <MapCard />
         </ParallaxItem>
-        <ParallaxItem strength={16} speed={1.0}>
+        <ParallaxItem strength={16} speed={1.0} scrollDepth={35}>
           <LinkedInCard />
         </ParallaxItem>
 
         {/* chat screenshot */}
-        <ParallaxItem strength={18} speed={1.25}>
+        <ParallaxItem strength={18} speed={1.25} scrollDepth={60}>
           <div className="absolute border-[2.159px] border-solid border-white h-[122.93px] left-[596.62px] overflow-clip rounded-[8.637px] shadow-[0px_2.879px_14.395px_0px_rgba(0,0,0,0.12)] top-[732.95px] w-[395.279px]">
             <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8.637px] size-full" src="/assets/images/insights-chat.png" />
           </div>
         </ParallaxItem>
 
         {/* annotations */}
-        <ParallaxItem strength={12} speed={1.0}>
+        <ParallaxItem strength={12} speed={1.0} scrollDepth={-45}>
           <p className="absolute font-inter font-medium leading-[0] left-[689.34px] not-italic text-[21px] text-black top-[26.8px] tracking-[-1.05px] w-[233.09px]">
             <span className="font-bold leading-[normal]">Know </span>
             <span className="leading-[normal]">who you&apos;re speaking to </span>
@@ -423,7 +425,7 @@ export default function InsightsSection() {
             <span className="leading-[normal]"> the meeting begins</span>
           </p>
         </ParallaxItem>
-        <ParallaxItem strength={14} speed={1.2}>
+        <ParallaxItem strength={14} speed={1.2} scrollDepth={50}>
           <p className="absolute font-inter font-normal leading-[0] left-[108.56px] not-italic text-[21px] text-black top-[794.42px] tracking-[-1.05px] w-[272.59px]">
             <span className="leading-[normal]">Giving your team the </span>
             <span className="font-bold leading-[normal]">confidence</span>
