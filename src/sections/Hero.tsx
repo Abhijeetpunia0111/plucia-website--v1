@@ -106,7 +106,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div className="font-inter font-normal leading-[0] mx-auto mt-[40px] lg:mt-[68px] pb-[8px] text-[#202020] text-[16px] sm:text-[18px] text-center tracking-[-0.05em] w-full max-w-[544px]" initial={entrance} animate={contentAnimation} transition={reveal(0.24, 1.0)}>
-          <p className="leading-[normal] mb-0">Our AI Agents does end to end conversations on behalf of you.</p>
+          <p className="leading-[normal] mb-0">Our AI Agents do end to end conversations on behalf of you.</p>
           
         </motion.div>
       </div>

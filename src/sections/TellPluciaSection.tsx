@@ -35,8 +35,8 @@ function ChannelBubble({ left, icon, inset = false }: { left: string; icon: stri
 
 export default function TellPluciaSection() {
   return (
-    <section className="flex flex-col lg:flex-row gap-[72px] lg:gap-[60px] xl:gap-[117px] items-center mt-[100px] lg:mt-[174px] mx-auto px-[20px] sm:px-[40px] relative w-full max-w-[1272px]">
-      <div className="flex flex-col gap-[20px] lg:gap-[28px] items-start leading-[normal] relative w-full lg:min-w-0 max-w-[558px]">
+    <section className="flex flex-col lg:flex-row gap-[105px] lg:gap-[60px] xl:gap-[117px] items-center mt-[165px] lg:mt-[174px] mx-auto px-[20px] sm:px-[40px] relative w-full max-w-[1272px]">
+      <div className="order-2 lg:order-none flex flex-col gap-[20px] lg:gap-[28px] items-start leading-[normal] relative w-full lg:min-w-0 max-w-[558px]">
         <p className="font-manrope font-semibold relative shrink-0 text-[clamp(32px,5vw,50px)] text-black tracking-[-0.05em] w-full">
           <DistortText text="Just Tell Plucia What You Need." />
         </p>
@@ -46,8 +46,11 @@ export default function TellPluciaSection() {
         <CtaLink>Improve your productivity now</CtaLink>
       </div>
 
-      {/* dark motion card — pixel-exact canvas, scaled to fit on small screens */}
-      <ScaleBox designWidth={517} designHeight={499} className="shrink-0 max-w-[517px]">
+      {/* dark motion card — pixel-exact canvas, scaled to fit on small screens.
+          Comes first in document order on mobile/tablet (order-1) so the
+          animation leads and the copy/CTA follows below it; desktop keeps
+          its original text-then-card left-to-right order (order-none). */}
+      <ScaleBox designWidth={517} designHeight={499} className="order-1 lg:order-none shrink-0 max-w-[517px]">
       <div className="bg-[#333] h-[499px] relative rounded-[24px] shrink-0 w-[517px] overflow-visible">
         <div
           data-motion-section="tell-plucia"

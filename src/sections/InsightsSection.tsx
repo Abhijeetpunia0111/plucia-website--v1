@@ -55,7 +55,7 @@ function MapCard() {
           19.870
         </p>
         <p className="absolute font-inter font-normal leading-[normal] left-0 not-italic right-[-5.71%] text-[#696974] text-[12.446px] top-[calc(50%+12.45px)] tracking-[0.0889px] whitespace-nowrap">
-          Our most customers in US
+          Most of our customers are in the US
         </p>
       </div>
       {/* zoom buttons */}
@@ -88,7 +88,10 @@ function MapCard() {
 
 function SophieCard() {
   return (
-    <div className="absolute flex flex-col gap-[10.668px] items-center left-[331.5px] origin-top-left scale-[0.85] top-[128px] w-[315.49px]">
+    // Sophie's card is the centerpiece of the mobile collage, so it gets a
+    // boost there instead of the 0.85 shrink that keeps it clear of the call
+    // rating card's overlap on larger screens (see CallRatingCard).
+    <div className="absolute flex flex-col gap-[10.668px] items-center left-[331.5px] origin-top-left scale-[1.15] lg:scale-[0.85] top-[128px] w-[315.49px]">
       <div className="bg-[#f8f8f8] flex flex-col gap-[10.668px] items-start p-[10.668px] relative rounded-[23.114px] shrink-0 w-full">
         <div className="h-[300.629px] relative rounded-[14.224px] shrink-0 w-[294.154px]">
           <img alt="Sophie Bennett" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[14.224px] size-full" src="/assets/images/sophie-photo.png" />
@@ -173,7 +176,7 @@ function SophieCard() {
 
 function ProfileSummaryCard() {
   return (
-    <div className="absolute bg-[#f1f0ee] border-[#34a853] border-[2.425px] border-solid drop-shadow-[0px_16.945px_31.771px_rgba(0,0,0,0.12)] flex flex-col gap-[23.299px] h-[316.92px] items-start left-[678.31px] p-[25.417px] rounded-bl-[27.535px] rounded-br-[27.535px] rounded-tr-[27.535px] top-[176.91px] w-[354.09px]">
+    <div className="absolute bg-[#f1f0ee] border-[#34a853] border-[2.425px] border-solid drop-shadow-[0px_16.945px_31.771px_rgba(0,0,0,0.12)] flex flex-col gap-[23.299px] h-[316.92px] items-start left-[678.31px] origin-top-left p-[25.417px] rounded-bl-[27.535px] rounded-br-[27.535px] rounded-tr-[27.535px] scale-[0.75] lg:scale-100 top-[176.91px] w-[354.09px]">
       <div className="flex gap-[6.354px] items-center leading-[normal] relative shrink-0 w-full whitespace-nowrap">
         <p className="font-dmsans font-bold relative shrink-0 text-[25.417px] text-black tracking-[-1.2709px]">Plucia AI </p>
         <span aria-hidden className="bg-black inline-block rounded-full shrink-0 size-[6px]" />
@@ -204,7 +207,9 @@ function ProfileSummaryCard() {
 
 function LinkedInCard() {
   return (
-    <>
+    // Company-info card is dropped from the mobile collage entirely (the
+    // whole canvas is already crowded there) and only reappears at sm+.
+    <div className="hidden lg:contents">
       <div className="absolute h-[233.808px] left-0 top-[516.52px] w-[284.481px]">
         <div className="absolute contents left-0 top-[29.34px]">
           <div className="absolute bg-white h-[204.471px] left-0 rounded-[21.336px] top-[29.34px] w-[284.481px]" />
@@ -291,7 +296,7 @@ function LinkedInCard() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -323,7 +328,7 @@ function CallRatingCard() {
 
 export default function InsightsSection() {
   return (
-    <section className="flex flex-col items-center pt-[100px] lg:pt-[124px] relative w-full">
+    <section className="flex flex-col items-center pt-[45px] lg:pt-[124px] relative w-full">
       {/* color blob — sits behind the left half of the collage (Figma 2877:21505).
           Anchored to the centered 1445px canvas: left = 50% − 722px ≈ canvas x 0. */}
       <div className="absolute pointer-events-none left-[-240px] size-[560px] top-[220px] lg:left-[calc(50%-722px)] lg:size-[1079.215px] lg:top-[410px]">
@@ -370,8 +375,9 @@ export default function InsightsSection() {
           </div>
         </ParallaxItem>
 
-        {/* up-selling pill */}
-        <ParallaxItem strength={22} speed={1.4} scrollDepth={55}>
+        {/* up-selling pill — z-10 so it stacks over the chat screenshot below it
+            when the two overlap at narrower widths */}
+        <ParallaxItem strength={22} speed={1.4} scrollDepth={55} className="relative z-10">
           <div className="absolute bg-[#f4f4f4] border-[1.984px] border-solid border-white drop-shadow-[0px_0px_8.43px_rgba(0,0,0,0.1)] flex gap-[5.26px] h-[33.315px] items-center left-[661.42px] pl-[4.384px] pr-[12.274px] py-[4.384px] rounded-[10.521px] top-[670.91px] w-[296.466px]">
             <div className="flex items-center overflow-clip p-[4.384px] relative rounded-[7.89px] shadow-[0px_7.89px_13.151px_0px_rgba(0,0,0,0.08),0px_3.507px_3.507px_0px_rgba(0,0,0,0.12),0px_3.507px_3.507px_0px_rgba(0,0,0,0.02),0px_3.507px_7.014px_0px_rgba(0,0,0,0.05)] shrink-0">
               <div aria-hidden className="absolute bg-gradient-to-b from-[#292929] inset-0 pointer-events-none rounded-[7.89px] to-[#111]" />
@@ -381,7 +387,7 @@ export default function InsightsSection() {
               <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_1.753px_3.244px_0px_rgba(255,255,255,0.2),inset_0px_3.507px_7.014px_0px_rgba(0,0,0,0.3),inset_0px_1.753px_1.753px_0px_rgba(0,0,0,0.5)]" />
             </div>
             <p className="font-inter font-medium leading-[1.5] relative shrink-0 text-[#3d3d3d] text-[14.027px] tracking-[-0.7014px] whitespace-nowrap">
-              Up Selling product based on coverstation
+              Up Selling product based on conversation
             </p>
           </div>
         </ParallaxItem>

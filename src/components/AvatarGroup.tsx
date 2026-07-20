@@ -27,7 +27,7 @@ export default function AvatarGroup({ light = false }: { light?: boolean }) {
       </div>
       <p className={`font-inter font-normal leading-[0] relative shrink text-[14px] sm:text-[16px] text-center tracking-[-0.05em] ${light ? "text-[#fefefe]" : "text-[#202020]"}`}>
         <span className="font-bold leading-[normal]">7,136 </span>
-        <span className="leading-[normal]">people already Subscribe to Plucia's update</span>
+        <span className="leading-[normal]">people already Subscribe to Plucia's updates</span>
       </p>
     </div>
   );

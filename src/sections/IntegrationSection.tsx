@@ -26,11 +26,16 @@ const APP_ICONS = [
   { left: "left-[65.13px]", top: "top-[554.63px]", icon: "/assets/icons/instagram.svg", size: "size-[31.875px]", inset: false },
   { left: "left-[177.13px]", top: "top-[438.23px]", icon: "/assets/icons/int-icon-1.svg", size: "size-[31.875px]", inset: false },
   { left: "left-[53.8px]", top: "top-[291.3px]", icon: "/assets/logocom/slack-new-logo-logo.svg", size: "size-[31.875px]", inset: false },
-  { left: "left-[239.57px]", top: "top-[339.11px]", icon: "/assets/icons/int-icon-2.svg", size: "size-[31.875px]", inset: false },
+  // WhatsApp sits right on its wire's next vertex (verified against int-wire-2's
+  // path data) on mobile only — the default position crowds Slack/Teams once
+  // the counter-scale (scale-[1.8]) is applied at that breakpoint.
+  { left: "left-[330.3px] lg:left-[239.57px]", top: "top-[432.24px] lg:top-[339.11px]", icon: "/assets/icons/int-icon-2.svg", size: "size-[31.875px]", inset: false },
   { left: "left-[1066.13px]", top: "top-[551.27px]", icon: "/assets/icons/int-icon-3.svg", size: "size-[31.875px]", inset: false },
   { left: "left-[1098.68px]", top: "top-[427.09px]", icon: "/assets/icons/int-icon-slack.svg", size: "size-[31.876px]", inset: true },
   { left: "left-[1002.38px]", top: "top-[232.34px]", icon: "/assets/icons/int-icon-4.svg", size: "size-[31.875px]", inset: false },
-  { left: "left-[971.17px]", top: "top-[397.27px]", icon: "/assets/icons/int-icon-5.svg", size: "size-[31.875px]", inset: false },
+  // Gmail: same deal, moved to its wire's (int-wire-3r) next vertex on mobile
+  // only — it was crowding Salesforce/LinkedIn there.
+  { left: "left-[855.66px] lg:left-[971.17px]", top: "top-[496.77px] lg:top-[397.27px]", icon: "/assets/icons/int-icon-5.svg", size: "size-[31.875px]", inset: false },
 ];
 
 export default function IntegrationSection() {
@@ -78,7 +83,11 @@ export default function IntegrationSection() {
             <div className="-scale-y-100 flex-none rotate-180">
               <div className={`${wire.h} relative ${wire.w}`}>
                 <div className={`absolute ${wire.inset}`}>
-                  <img alt="" className="block max-w-none size-full" src={wire.src} />
+                  {/* wires bake a very pale gray gradient into the SVG itself,
+                      which nearly disappears once the whole canvas shrinks
+                      on phones — darken them there via filter since an <img>
+                      can't be restyled internally. */}
+                  <img alt="" className="block max-w-none size-full contrast-150 brightness-75 lg:contrast-100 lg:brightness-100" src={wire.src} />
                   <PulseGlow src={wire.src} horizontal />
                 </div>
               </div>
@@ -87,7 +96,7 @@ export default function IntegrationSection() {
         ) : (
           <div key={i} className={`absolute ${wire.h} ${wire.left} ${wire.top} ${wire.w}`}>
             <div className={`absolute ${wire.inset}`}>
-              <img alt="" className="block max-w-none size-full" src={wire.src} />
+              <img alt="" className="block max-w-none size-full contrast-150 brightness-75 lg:contrast-100 lg:brightness-100" src={wire.src} />
               <PulseGlow src={wire.src} horizontal />
             </div>
           </div>
@@ -113,11 +122,14 @@ export default function IntegrationSection() {
         </p>
       </div>
 
-      {/* app icon bubbles */}
+      {/* app icon bubbles — the whole canvas shrinks a lot on phones (~0.27x
+          at 335px wide), so these render as near-invisible dots there.
+          Counter-scale them up on mobile only; the default center transform
+          origin keeps each bubble anchored on its wire endpoint. */}
       {APP_ICONS.map((b, i) => (
         <div
           key={i}
-          className={`absolute bg-[#f4f4f4] border-[2.656px] border-solid border-white drop-shadow-[0px_2.656px_7.969px_rgba(0,0,0,0.1)] flex items-center justify-center ${b.left} p-[2.656px] rounded-full size-[63.75px] ${b.top}`}
+          className={`absolute bg-[#f4f4f4] border-[2.656px] border-solid border-white drop-shadow-[0px_2.656px_7.969px_rgba(0,0,0,0.1)] flex items-center justify-center ${b.left} p-[2.656px] rounded-full size-[63.75px] ${b.top} scale-[1.8] lg:scale-100`}
         >
           <div className={`relative shrink-0 ${b.size}`}>
             {b.inset ? (

@@ -51,7 +51,7 @@ const CARDS: CardData[] = [
     count: 14,
     name: "Anas",
     time: "3m ago",
-    message: <p className="whitespace-pre-wrap">Wants you to share a sales contract from with all key details includes</p>,
+    message: <p className="whitespace-pre-wrap">Wants you to share a sales contract with all key details included</p>,
   },
 ];
 

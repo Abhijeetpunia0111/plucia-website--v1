@@ -49,7 +49,7 @@ export default function FeaturesSection() {
           <div className="bg-[#f4f4f4] h-[346px] overflow-clip relative rounded-[24px] w-[410.67px]">
             <div className="[word-break:break-word] absolute bottom-[24px] content-stretch flex flex-col font-manrope font-medium gap-[8px] items-start left-[24px]">
               <p className="leading-[28px] min-w-full relative shrink-0 text-[22px] text-black w-[min-content]">
-                AI Powered Sales Analystics
+                AI Powered Sales Analytics
               </p>
               <p className="leading-[normal] relative shrink-0 text-[#838383] text-[16px] w-[353.337px]">
                 AI assistants trained on your business, built to work the way your team does.
@@ -223,7 +223,7 @@ export default function FeaturesSection() {
                 AI Cold Calling Agents
               </p>
               <p className="leading-[normal] relative shrink-0 text-[#838383] text-[16px] w-[353.337px]">
-                Joins every meeting captures key notes, and automatically follows up with your team.
+                Joins every meeting, captures key notes, and automatically follows up with your team.
               </p>
             </div>
             <div className="-translate-x-1/2 absolute bg-[#e5e5e5] h-[212px] left-[calc(50%-1px)] overflow-clip rounded-[16px] top-[12px] w-[386.67px]">
@@ -240,7 +240,7 @@ export default function FeaturesSection() {
                 Cross-Platform Automation
               </p>
               <p className="leading-[normal] relative shrink-0 text-[#838383] text-[16px] w-[353.337px]">
-                One AI platform connecting your CRM, Slack and every tool your team relies on.
+                One AI platform connecting your CRM, Slack, and every tool your team relies on.
               </p>
             </div>
             <div className="-translate-x-1/2 absolute bg-[#e5e5e5] h-[212px] left-[calc(50%-1px)] overflow-clip rounded-[16px] top-[12px] w-[386.67px]">
