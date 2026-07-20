@@ -39,7 +39,7 @@ export default function FaqSection() {
 
   return (
     <section className="flex flex-col lg:flex-row gap-[48px] lg:gap-[32px] items-start lg:justify-between mt-[120px] lg:mt-[212px] mx-auto px-[20px] xl:px-0 relative w-full max-w-[1283px] xl:max-w-[1243px]">
-      <div className="flex flex-col gap-[40px] lg:gap-0 lg:h-[609px] items-start lg:justify-between relative w-full lg:flex-1 lg:max-w-[580px]">
+      <div className="flex flex-col gap-[40px] lg:gap-0 lg:h-[609px] items-start lg:justify-between lg:sticky lg:top-[112px] relative w-full lg:flex-1 lg:max-w-[580px]">
         <div className="flex flex-col gap-[32px] items-start relative shrink-0 w-full">
           <div className="flex items-center relative shrink-0">
             <div className="flex flex-col font-urbanist font-semibold justify-center leading-[0] relative shrink-0 text-[#626262] text-[20px] whitespace-nowrap">
