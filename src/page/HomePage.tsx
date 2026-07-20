@@ -6,6 +6,7 @@ import Reveal from "@/components/Reveal";
 import Hero from "@/sections/Hero";
 import IntegrationsMarquee from "@/sections/IntegrationsMarquee";
 import PlatformSection from "@/sections/PlatformSection";
+import AutomationSection from "@/sections/AutomationSection";
 import TellPluciaSection from "@/sections/TellPluciaSection";
 import CalendarSection from "@/sections/CalendarSection";
 import InsightsSection from "@/sections/InsightsSection";
@@ -36,6 +37,7 @@ export default function HomePage() {
         <Reveal><TellPluciaSection /></Reveal>
         <Reveal><CalendarSection /></Reveal>
         <Reveal><PlatformSection /></Reveal>
+        {/* <Reveal><AutomationSection /></Reveal> */}
         <Reveal><InsightsSection /></Reveal>
         <Reveal><FeaturesSection /></Reveal>
         <Reveal><IntegrationSection /></Reveal>

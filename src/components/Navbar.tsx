@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <div className="bg-white border border-[rgba(0,0,0,0.05)] border-solid drop-shadow-[0px_4px_11px_rgba(0,0,0,0.15)] flex items-center justify-between p-[10px] relative rounded-[12px] w-full">
-      <div className="flex gap-[6.963px] items-center px-[8px] sm:px-[15px] relative shrink-0">
+      <Link href="/" className="flex gap-[6.963px] items-center px-[8px] sm:px-[15px] relative shrink-0">
         <div className="relative shrink-0 size-[23.211px]">
           <img alt="Plucia logo" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/plucia-logo.svg" />
         </div>
@@ -14,7 +14,7 @@ export default function Navbar() {
             <p className="leading-[32.495px]">Plucia</p>
           </div>
         </div>
-      </div>
+      </Link>
       <div className="flex gap-[4px] items-center relative shrink-0">
         <Link href="/login" className="hidden sm:flex items-center justify-center px-[20px] py-[10px] relative rounded-[8px] shrink-0 cursor-pointer">
           <p className="font-manrope font-semibold leading-[normal] relative shrink-0 text-[#202020] text-[16px] whitespace-nowrap">

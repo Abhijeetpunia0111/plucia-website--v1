@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { CHANNELS, ChannelIcon, type ChannelId } from "./ChannelIcons";
 
 /**
@@ -13,6 +14,7 @@ import { CHANNELS, ChannelIcon, type ChannelId } from "./ChannelIcons";
  *   Slack / CRM.
  */
 export default function HeroComposer() {
+  const router = useRouter();
   const [text, setText] = useState("");
   const [channel, setChannel] = useState<ChannelId | null>("whatsapp");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,6 +46,9 @@ export default function HeroComposer() {
         <input
           value={text}
           onChange={(e) => setText(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") router.push("/signup");
+          }}
           type="text"
           placeholder="Ask anything...."
           className="flex-[1_0_0] bg-transparent font-urbanist font-medium h-full leading-[24px] min-w-px relative text-[#2e2e2e] text-[18px] outline-none placeholder:text-[#9a9a9a]"
@@ -152,7 +157,7 @@ export default function HeroComposer() {
         <button
           type="button"
           aria-label="Send"
-          onClick={() => setText("")}
+          onClick={() => router.push("/signup")}
           className="flex flex-col items-center justify-center overflow-clip p-[12px] relative rounded-[12px] shadow-[0px_6.866px_6.866px_-2.333px_rgba(0,0,0,0.16),0px_13.647px_13.647px_-2.917px_rgba(0,0,0,0.16),0px_30px_30px_-3.5px_rgba(0,0,0,0.08)] shrink-0 size-[40px] cursor-pointer"
         >
           <div aria-hidden className="absolute bg-[#202020] inset-0 pointer-events-none rounded-[12px]" />

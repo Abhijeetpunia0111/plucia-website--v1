@@ -1,6 +1,8 @@
 import ScaleBox from "@/components/ScaleBox";
+import CtaLink from "@/components/CtaLink";
 import DistortText from "@/components/DistortText";
 import NotificationCarousel from "@/components/NotificationCarousel";
+import PromptCardAnimated from "@/components/PromptCardAnimated";
 import PulseGlow from "@/components/PulseGlow";
 
 /**
@@ -41,6 +43,7 @@ export default function TellPluciaSection() {
         <p className="font-inter font-normal relative shrink-0 text-[17px] sm:text-[21px] text-[#202020] tracking-[-0.05em] w-full">
           Type a simple instruction in natural language, and Plucia instantly understands your intent, connects every relevant channel, gathers customer context, and begins executing the work—just like an experienced business operator.
         </p>
+        <CtaLink>Improve your productivity now</CtaLink>
       </div>
 
       {/* dark motion card — pixel-exact canvas, scaled to fit on small screens */}
@@ -78,42 +81,8 @@ export default function TellPluciaSection() {
             </div>
           </div>
 
-          {/* prompt card */}
-          <div className="-translate-x-1/2 absolute bg-[#f1f1f1] border-[2.508px] border-solid border-white flex flex-col gap-[9.641px] h-[133.049px] items-start left-[calc(50%+0.03px)] overflow-clip p-[9.641px] rounded-[19.282px] shadow-[0px_4.821px_14.462px_0px_rgba(0,0,0,0.15)] top-[465.18px] w-[349.012px]">
-            <div className="bg-[#fcfcfc] flex flex-[1_0_0] items-start min-h-px overflow-clip p-[9.641px] relative rounded-[11.569px] w-full">
-              <p className="flex-[1_0_0] font-inter font-normal h-full leading-[normal] min-w-px relative text-[13.498px] text-black">
-                Handle my WhatsApp leads for me. Just talk to them like I would, answer their questions, and help move them toward a meeting or a sale.
-              </p>
-            </div>
-            <div className="flex items-start justify-between relative shrink-0 w-full">
-              <div className="flex gap-[15.426px] items-start relative shrink-0">
-                <div className="bg-white flex items-center justify-center overflow-clip p-[9.641px] relative rounded-[23.139px] shrink-0">
-                  <div className="overflow-clip relative shrink-0 size-[13.498px]">
-                    <div className="absolute inset-[2.63%_0_2.7%_0]">
-                      <img alt="" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/clip-lg.svg" />
-                    </div>
-                  </div>
-                </div>
-                <div className="bg-white flex gap-[9.641px] items-center justify-center overflow-clip px-[9.641px] py-[6.27px] relative rounded-[23.139px] self-stretch shrink-0">
-                  <div className="flex items-center relative shrink-0">
-                    <p className="font-worksans font-semibold leading-[normal] relative shrink-0 text-[11.569px] text-black whitespace-nowrap">
-                      Channels
-                    </p>
-                  </div>
-                  <svg className="shrink-0" width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M2 3.5L5 6.5L8 3.5" stroke="black" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              </div>
-              <div className="flex items-start relative shrink-0">
-                <div className="bg-[#202020] flex items-center justify-center overflow-clip p-[9.641px] relative rounded-[23.139px] shrink-0">
-                  <div className="relative shrink-0 size-[13.498px]">
-                    <img alt="" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/arrow-up-lg.svg" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* prompt card — typing + cursor-click loop */}
+          <PromptCardAnimated />
 
           {/* chat notifications — infinite 3-card carousel (front swipes right + toast) */}
           <NotificationCarousel />

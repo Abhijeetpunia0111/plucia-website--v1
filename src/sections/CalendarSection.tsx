@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
+import CtaLink from "@/components/CtaLink";
 import DistortText from "@/components/DistortText";
 
 /**
@@ -51,6 +52,7 @@ export default function CalendarSection() {
         <p className="font-inter font-normal relative shrink-0 text-[17px] sm:text-[21px] text-[#202020] tracking-[-0.05em] w-full">
           Plucia qualifies leads, handles follow-ups, answers questions, and schedules meetings when prospects are ready keeping your pipeline moving while your team focuses on closing deals.
         </p>
+        <CtaLink>Get Started</CtaLink>
       </div>
     </section>
   );

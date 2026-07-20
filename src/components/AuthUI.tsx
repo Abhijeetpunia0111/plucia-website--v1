@@ -74,3 +74,18 @@ export function TextField({
     </label>
   );
 }
+
+export function TextAreaField({
+  label,
+  ...props
+}: { label: string } & React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
+  return (
+    <label className="flex flex-col gap-[8px] w-full">
+      <span className="font-inter font-medium text-[14px] text-[#202020]">{label}</span>
+      <textarea
+        {...props}
+        className="bg-white border border-[rgba(0,0,0,0.12)] border-solid font-inter outline-none px-[16px] py-[12px] placeholder:text-[#a0a0a0] resize-none rounded-[10px] text-[#202020] text-[16px] focus:border-[#202020] focus:ring-2 focus:ring-[#202020]/10 transition-colors w-full"
+      />
+    </label>
+  );
+}

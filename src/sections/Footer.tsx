@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 /**
  * Footer — Figma 2877:22925.
  * The pastel gradient background is a full-bleed layer that stretches to the
@@ -40,28 +42,29 @@ export default function Footer() {
           <div className="flex gap-[16px] items-start leading-[1.4] not-italic relative shrink-0 text-[#1b1819] w-full md:w-[442px]">
             <div className="flex flex-[1_0_0] flex-col gap-[24px] items-start min-w-px relative">
               <p className="font-inter font-medium opacity-60 relative shrink-0 text-[10px] tracking-[0.4px] uppercase w-full">
-                Information
+                Company
               </p>
               <div className="flex flex-col font-inter font-normal gap-[4px] items-start relative shrink-0 text-[16px] w-full">
-                <p className="relative shrink-0 w-full">Privacy</p>
-                <p className="relative shrink-0 w-full">FAQ</p>
-                <p className="relative shrink-0 w-full">Partners</p>
-                <p className="relative shrink-0 w-full">Contacts</p>
+                <Link href="/" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Home</Link>
+                <Link href="/contact" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Contact Us</Link>
+                <Link href="/careers" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Careers</Link>
+                <Link href="/contact" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">FAQ</Link>
               </div>
             </div>
             <div className="flex flex-[1_0_0] flex-col gap-[24px] items-start min-w-px relative">
               <p className="font-inter font-medium opacity-60 relative shrink-0 text-[10px] tracking-[0.4px] uppercase w-full">
-                Menu
+                Resources
               </p>
               <div className="flex flex-col font-inter font-normal gap-[4px] items-start relative shrink-0 text-[16px] w-full">
-                <p className="relative shrink-0 w-full">For a couple</p>
-                <p className="relative shrink-0 w-full">For him</p>
-                <p className="relative shrink-0 w-full">For her</p>
+                <Link href="/login" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Login</Link>
+                <Link href="/signup" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Get Started</Link>
+                <Link href="/privacy" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Privacy Policy</Link>
+                <Link href="/terms" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Terms of Service</Link>
               </div>
             </div>
           </div>
           <div className="flex w-full md:w-auto md:flex-[1_0_0] flex-col gap-[16px] items-start md:items-end md:min-w-px relative">
-            <button className="group flex items-center overflow-clip px-[16px] py-[10px] relative rounded-[8px] shadow-[0px_0px_0px_0.8px_#161616,0px_6.866px_6.866px_-2.333px_rgba(0,0,0,0.16),0px_13.647px_13.647px_-2.917px_rgba(0,0,0,0.16),0px_30px_30px_-3.5px_rgba(0,0,0,0.08)] shrink-0 cursor-pointer transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0px_0px_0px_0.8px_#161616,0px_10px_10px_-3px_rgba(0,0,0,0.22),0px_18px_18px_-3px_rgba(0,0,0,0.2),0px_36px_34px_-4px_rgba(0,0,0,0.12)]">
+            <Link href="/contact" className="group flex items-center overflow-clip px-[16px] py-[10px] relative rounded-[8px] shadow-[0px_0px_0px_0.8px_#161616,0px_6.866px_6.866px_-2.333px_rgba(0,0,0,0.16),0px_13.647px_13.647px_-2.917px_rgba(0,0,0,0.16),0px_30px_30px_-3.5px_rgba(0,0,0,0.08)] shrink-0 cursor-pointer transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0px_0px_0px_0.8px_#161616,0px_10px_10px_-3px_rgba(0,0,0,0.22),0px_18px_18px_-3px_rgba(0,0,0,0.2),0px_36px_34px_-4px_rgba(0,0,0,0.12)]">
               <div
                 aria-hidden
                 className="absolute inset-0 pointer-events-none rounded-[8px]"
@@ -75,7 +78,7 @@ export default function Footer() {
                 <p className="relative shrink-0">Request a call</p>
               </div>
               <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_0.8px_0px_0px_rgba(255,255,255,0.16)]" />
-            </button>
+            </Link>
             <div className="flex flex-col font-inter font-semibold items-end leading-[1.3] not-italic relative shrink-0 text-[#1b1819] text-[12px] whitespace-nowrap">
               <p className="relative shrink-0">+1 (999) 999-99-99</p>
               <p className="relative shrink-0">info@logoipsum.com</p>
@@ -120,7 +123,7 @@ export default function Footer() {
         {/* bottom bar */}
         <div className="flex font-inter font-normal items-start justify-between leading-[1.4] not-italic relative shrink-0 text-[#202020] text-[10px] w-full whitespace-nowrap">
           <p className="relative shrink-0">© 2026 — Copyright</p>
-          <p className="relative shrink-0 text-right">Privacy</p>
+          <Link href="/privacy" className="relative shrink-0 text-right transition-opacity duration-200 hover:opacity-60">Privacy</Link>
         </div>
       </div>
     </footer>

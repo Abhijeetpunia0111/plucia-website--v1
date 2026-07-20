@@ -7,6 +7,8 @@ interface CardData {
   id: string;
   avatar: string;
   badge: string;
+  badgeBg: string;
+  count: number;
   name: string;
   time: string;
   message: React.ReactNode;
@@ -17,6 +19,8 @@ const CARDS: CardData[] = [
     id: "john",
     avatar: "/assets/images/chat-avatar-3.png",
     badge: "/assets/icons/whatsapp-badge-3.svg",
+    badgeBg: "#34a853",
+    count: 74,
     name: "John",
     time: "15m ago",
     message: (
@@ -27,17 +31,24 @@ const CARDS: CardData[] = [
     ),
   },
   {
-    id: "anari",
+    id: "vasu",
     avatar: "/assets/images/chat-avatar-2.png",
-    badge: "/assets/icons/whatsapp-badge-2.svg",
-    name: "Anari",
+    // int-icon-5.svg is the genuine multicolor Gmail/Google mark — unlike
+    // channel-gmail.svg, which is mislabeled in this asset set and actually
+    // contains LinkedIn artwork.
+    badge: "/assets/icons/int-icon-5.svg",
+    badgeBg: "#f4f4f4",
+    count: 35,
+    name: "Vasu",
     time: "Yesterday",
     message: <p>Would you send the sales contract from Brightstone Realty with all relevant details?</p>,
   },
   {
     id: "anas",
     avatar: "/assets/images/chat-avatar-1.png",
-    badge: "/assets/icons/whatsapp-badge-1.svg",
+    badge: "/assets/icons/linkedin-02.svg",
+    badgeBg: "#0A66C2",
+    count: 14,
     name: "Anas",
     time: "3m ago",
     message: <p className="whitespace-pre-wrap">Wants you to share a sales contract from with all key details includes</p>,
@@ -115,7 +126,10 @@ export default function NotificationCarousel() {
                 <div className="absolute border-[0.838px] border-[rgba(32,32,32,0.01)] border-solid flex items-center left-0 overflow-clip p-[8.384px] rounded-full shadow-[0px_0px_0px_1.677px_rgba(255,255,255,0.8),0px_11.738px_6.707px_0px_rgba(0,0,0,0.05),0px_5.03px_5.03px_0px_rgba(0,0,0,0.09),0px_1.677px_2.515px_0px_rgba(0,0,0,0.1)] size-[33.536px] top-0">
                   <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-full size-full" src={card.avatar} />
                 </div>
-                <div className="absolute bg-[#34a853] border-[1.032px] border-solid border-white flex items-center justify-center rounded-full left-[22.22px] top-[-3.32px] size-[18.145px] p-[3.233px]">
+                <div
+                  className="absolute border-[1.032px] border-solid border-white flex items-center justify-center rounded-full left-[22.22px] top-[-3.32px] size-[18.145px] p-[3.233px]"
+                  style={{ backgroundColor: card.badgeBg }}
+                >
                   <div className="relative shrink-0 h-[11.569px] w-[11.48px]">
                     <img alt="" className="absolute block inset-0 max-w-none size-full" src={card.badge} />
                   </div>
@@ -139,7 +153,7 @@ export default function NotificationCarousel() {
             {/* unread badge — travels with whichever card is currently front */}
             {isFront && (
               <div className="absolute bg-[#ff2f2f] flex flex-col items-center justify-center rounded-[3.984px] p-[4.979px] right-[-14px] top-[-14px] w-[27.959px]">
-                <p className="font-inter font-semibold leading-[1.5] text-[14.562px] text-center text-white w-full whitespace-nowrap">74</p>
+                <p className="font-inter font-semibold leading-[1.5] text-[14.562px] text-center text-white w-full whitespace-nowrap">{card.count}</p>
               </div>
             )}
           </motion.div>

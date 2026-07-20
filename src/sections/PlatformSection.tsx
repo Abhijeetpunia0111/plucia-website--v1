@@ -7,18 +7,18 @@ import DistortText from "@/components/DistortText";
  * "The AI Copilot Built for Modern Sales Teams." — benchmark section.
  * Aside-style horizontal bar chart: one row per product (logo, name,
  * animated score bar, value), hairline separators, Plucia's bar highlighted
- * in near-black. Logos live in /assets/logocom/.
+ * in brand blue. Logos live in /assets/logocom/.
  */
 
 // logoClass heights are tuned per SVG: the wordmarks have very different
 // viewBox padding (Claude's glyphs fill its box, Plucia's sit in a tall one,
 // the CRM badges tower over their text), so equal heights render unequal.
 const BENCHMARKS = [
-  { name: "Plucia", logo: "/assets/logocom/bench-plucia.svg", logoClass: "h-[25px] sm:h-[30px]", value: 100, highlight: true },
-  { name: "SendSeven", logo: "/assets/logocom/bench-sendseven.svg", logoClass: "h-[26px] sm:h-[32px]", value: 84 },
-  { name: "Claude", logo: "/assets/logocom/bench-claude.svg", logoClass: "h-[18px] sm:h-[22px]", value: 61 },
-  { name: "OpenAI", logo: "/assets/logocom/bench-chatgpt.svg", logoClass: "h-[20px] sm:h-[24px]", value: 43 },
-  { name: "CRM", logo: "/assets/logocom/bench-crms.svg", logoClass: "h-[33px] sm:h-[40px]", value: 38 },
+  { name: "Plucia", logo: "/assets/logocom/bench-plucia.svg", logoClass: "h-[25px] sm:h-[30px]", value: 98, highlight: true },
+  { name: "SendSeven", logo: "/assets/logocom/bench-sendseven.svg", logoClass: "h-[26px] sm:h-[32px]", value: 87 },
+  { name: "Claude", logo: "/assets/logocom/bench-claude.svg", logoClass: "h-[18px] sm:h-[22px]", value: 82 },
+  { name: "OpenAI", logo: "/assets/logocom/bench-chatgpt.svg", logoClass: "h-[20px] sm:h-[24px]", value: 77 },
+  { name: "CRM", logo: "/assets/logocom/bench-crms.svg", logoClass: "h-[33px] sm:h-[40px]", value: 59 },
 ];
 
 export default function PlatformSection() {
@@ -54,7 +54,7 @@ export default function PlatformSection() {
             </div>
             <div className="flex-1 min-w-0">
               <motion.div
-                className={`h-[26px] sm:h-[32px] rounded-[8px] ${row.highlight ? "bg-[#202020]" : "bg-[#e2e2ea]"}`}
+                className={`h-[26px] sm:h-[32px] rounded-[8px] ${row.highlight ? "bg-[#0062ff]" : "bg-[#e2e2ea]"}`}
                 initial={reduceMotion ? false : { width: 0 }}
                 whileInView={{ width: `${row.value}%` }}
                 viewport={{ once: true, amount: 0.6 }}

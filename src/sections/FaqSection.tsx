@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import DistortText from "@/components/DistortText";
 
 /** "General Question asked by Everyone" — Figma 2877:22869 */
@@ -47,7 +48,7 @@ export default function FaqSection() {
           <div className="flex flex-col font-manrope font-medium justify-center leading-[0] min-w-full relative shrink-0 text-[#5c5c5c] text-[18px] tracking-[-0.6px] w-[min-content]">
             <p className="leading-[24px]">Our team is always here to help you with quick clear and reliable answers wherever needed</p>
           </div>
-          <button className="group flex items-center overflow-clip px-[24px] py-[12px] relative rounded-[8px] shadow-[0px_0px_0px_0.8px_#161616,0px_6.866px_6.866px_-2.333px_rgba(0,0,0,0.16),0px_13.647px_13.647px_-2.917px_rgba(0,0,0,0.16),0px_30px_30px_-3.5px_rgba(0,0,0,0.08)] shrink-0 cursor-pointer transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0px_0px_0px_0.8px_#161616,0px_10px_10px_-3px_rgba(0,0,0,0.22),0px_18px_18px_-3px_rgba(0,0,0,0.2),0px_36px_34px_-4px_rgba(0,0,0,0.12)]">
+          <Link href="/contact" className="group flex items-center overflow-clip px-[24px] py-[12px] relative rounded-[8px] shadow-[0px_0px_0px_0.8px_#161616,0px_6.866px_6.866px_-2.333px_rgba(0,0,0,0.16),0px_13.647px_13.647px_-2.917px_rgba(0,0,0,0.16),0px_30px_30px_-3.5px_rgba(0,0,0,0.08)] shrink-0 cursor-pointer transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0px_0px_0px_0.8px_#161616,0px_10px_10px_-3px_rgba(0,0,0,0.22),0px_18px_18px_-3px_rgba(0,0,0,0.2),0px_36px_34px_-4px_rgba(0,0,0,0.12)]">
             <div
               aria-hidden
               className="absolute inset-0 pointer-events-none rounded-[8px]"
@@ -62,7 +63,7 @@ export default function FaqSection() {
               <p className="leading-[normal]">Contact Sales</p>
             </div>
             <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_0.8px_0px_0px_rgba(255,255,255,0.16)]" />
-          </button>
+          </Link>
         </div>
       </div>
 

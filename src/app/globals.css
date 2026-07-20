@@ -131,6 +131,60 @@ html.lenis body {
   }
 }
 
+/* Automation section scene — app tiles travel along the dotted path into the
+   hub (CSS motion path), the hub's dashed rings spin in opposite directions,
+   and the output cards bob gently. All inert under prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .auto-flow-icon {
+    offset-rotate: 0deg;
+    opacity: 0;
+    animation: auto-flow 8s linear infinite;
+    animation-delay: var(--flow-delay, 0s);
+  }
+
+  .auto-spin {
+    animation: orb-cloud-spin 26s linear infinite;
+    transform-origin: 50% 50%;
+  }
+
+  .auto-spin-reverse {
+    animation: orb-cloud-spin 36s linear infinite reverse;
+    transform-origin: 50% 50%;
+  }
+
+  .auto-bob {
+    animation: auto-bob 5.5s ease-in-out infinite;
+    animation-delay: var(--bob-delay, 0s);
+  }
+}
+
+@keyframes auto-flow {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes auto-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 /* Integrations logo marquee — track holds two copies of the logo row and
    slides left by half its width, looping seamlessly right→left. */
 @media (prefers-reduced-motion: no-preference) {
