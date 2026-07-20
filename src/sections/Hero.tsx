@@ -85,9 +85,9 @@ export default function Hero() {
       <div className="relative mx-auto w-full max-w-[1440px] px-[20px] sm:px-[48px] xl:px-[152px] pt-[150px] sm:pt-[178px] lg:pt-[clamp(150px,17vh,218px)]">
         <motion.div className="flex flex-col gap-[24px] items-center mx-auto w-full max-w-[725px]" initial={entrance} animate={contentAnimation} transition={reveal(0.06, 1.1)}>
           <div className="flex flex-col gap-[4px] items-center relative shrink-0 w-full">
-            <AvatarGroup />
+            {/* <AvatarGroup /> */}<br />
             <p className="font-manrope font-semibold leading-[normal] relative shrink-0 text-[clamp(34px,6vw,50px)] text-black text-center tracking-[-0.05em] w-full">
-              <DistortText text="Meet Your AI Business Operator." />
+              <DistortText text="Meet Your AI Business Operator" />
             </p>
           </div>
           <div className="font-inter font-normal leading-[0] relative shrink-0 text-[#202020] text-[16px] sm:text-[18px] text-center tracking-[-0.05em] w-full max-w-[544px]">
@@ -106,8 +106,8 @@ export default function Hero() {
         </motion.div>
 
         <motion.div className="font-inter font-normal leading-[0] mx-auto mt-[40px] lg:mt-[68px] pb-[8px] text-[#202020] text-[16px] sm:text-[18px] text-center tracking-[-0.05em] w-full max-w-[544px]" initial={entrance} animate={contentAnimation} transition={reveal(0.24, 1.0)}>
-          <p className="leading-[normal] mb-0">Understands buyer intent, detects opportunities, engages.</p>
-          <p className="leading-[normal]">and your sales pipeline keeps moving.</p>
+          <p className="leading-[normal] mb-0">Our AI Agents does end to end conversations on behalf of you.</p>
+          
         </motion.div>
       </div>
     </section>

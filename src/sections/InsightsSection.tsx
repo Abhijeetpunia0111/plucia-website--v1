@@ -88,7 +88,7 @@ function MapCard() {
 
 function SophieCard() {
   return (
-    <div className="absolute flex flex-col gap-[10.668px] items-center left-[331.5px] top-[128px] w-[315.49px]">
+    <div className="absolute flex flex-col gap-[10.668px] items-center left-[331.5px] origin-top-left scale-[0.85] top-[128px] w-[315.49px]">
       <div className="bg-[#f8f8f8] flex flex-col gap-[10.668px] items-start p-[10.668px] relative rounded-[23.114px] shrink-0 w-full">
         <div className="h-[300.629px] relative rounded-[14.224px] shrink-0 w-[294.154px]">
           <img alt="Sophie Bennett" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[14.224px] size-full" src="/assets/images/sophie-photo.png" />
@@ -119,33 +119,13 @@ function SophieCard() {
               </div>
             </div>
           </div>
-          <div className="flex gap-[8.89px] items-start relative shrink-0 w-full">
-            <div className="flex flex-[1_0_0] flex-col font-manrope font-medium items-start leading-[normal] min-w-px relative">
-              <p className="relative shrink-0 text-[#808080] text-[12.446px] tracking-[-0.6223px] w-full">
-                Confidence Score
-              </p>
-              <p className="relative shrink-0 text-[#34a853] text-[34.34px] tracking-[-1.717px] w-full">
-                96%
-              </p>
-            </div>
-            <div className="bg-[#f0f0f0] border-[0.889px] border-[rgba(0,0,0,0.1)] border-dashed flex flex-col gap-[5.334px] items-center justify-center overflow-clip px-[8.001px] py-[5.334px] relative rounded-[10.668px] self-stretch shrink-0 w-[159.132px]">
-              {/* hidden placeholder rows (opacity 0 in the design) */}
-              {["call-done-sm", "happy-sm", "basket-sm"].map((icon, i) => (
-                <div key={icon} className="flex gap-[6.223px] items-center opacity-0 relative shrink-0 w-full">
-                  <div className="relative shrink-0 size-[12.398px]">
-                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={`/assets/icons/${icon}.svg`} />
-                  </div>
-                  <div className="flex flex-[1_0_0] flex-col gap-[3.556px] items-start min-w-px relative">
-                    <p className="font-manrope font-medium leading-[normal] relative shrink-0 text-[#808080] text-[7.112px] tracking-[-0.3556px] w-full">
-                      {["Call rating", "Mood", "Intent of purchase"][i]}
-                    </p>
-                    <div className="bg-[#d9d9d9] flex flex-col h-[2.216px] items-start pr-[21.336px] relative rounded-[88.9px] shrink-0 w-full">
-                      <div className={`${["bg-[#bef50b]", "bg-[#34a853]", "bg-[#f59e0b]"][i]} h-[2.216px] relative rounded-[88.9px] shrink-0 w-full`} />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="flex flex-col font-manrope font-medium items-start leading-[normal] relative shrink-0 w-full">
+            <p className="relative shrink-0 text-[#808080] text-[12.446px] tracking-[-0.6223px] w-full">
+              Confidence Score
+            </p>
+            <p className="relative shrink-0 text-[#34a853] text-[34.34px] tracking-[-1.717px] w-full">
+              96%
+            </p>
           </div>
         </div>
       </div>
@@ -164,6 +144,28 @@ function SophieCard() {
             </div>
           </div>
         ))}
+      </div>
+      {/* lead tag — CRM-style status pills: light tint bg, dot + label in the
+          same solid color (bg-current on the dot locks it to the label's
+          text color so they can never drift apart) */}
+      <div className="bg-white border-[1.984px] border-solid border-white drop-shadow-[0px_0px_8.43px_rgba(0,0,0,0.1)] flex flex-col gap-[10.521px] items-center px-[14.027px] py-[12.274px] relative rounded-[14.027px] shrink-0">
+        <p className="font-inter font-medium text-[#a0a0a0] text-[10.521px] tracking-[0.842px] uppercase">
+          Lead Tag
+        </p>
+        <div className="flex gap-[8.017px] items-center relative shrink-0">
+          {[
+            { label: "Hot", bg: "bg-[#fbdfdf]", color: "text-[#f03]" },
+            { label: "Cold", bg: "bg-[#dbe9ff]", color: "text-[#0062ff]" },
+            { label: "Neutral", bg: "bg-[#ececec]", color: "text-[#808080]" },
+          ].map((tag) => (
+            <div key={tag.label} className={`${tag.bg} flex gap-[6.313px] h-[33.315px] items-center justify-center px-[15.781px] relative rounded-[10.521px] shrink-0`}>
+              <span aria-hidden className={`${tag.color} bg-current rounded-full shrink-0 size-[6.313px]`} />
+              <p className={`font-inter font-medium text-[14.027px] ${tag.color} tracking-[-0.7014px] whitespace-nowrap`}>
+                {tag.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -335,7 +337,7 @@ export default function InsightsSection() {
             <img alt="" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/bot-message-square.svg" />
           </div>
           <p className="font-manrope font-medium leading-[normal] relative shrink-0 text-[#34a853] text-[16px] sm:text-[20px] tracking-[-0.05em] whitespace-pre">
-            Exclusive  Insights  by Plucia AI
+            Business Insights by Plucia AI
           </p>
         </div>
         <p className="font-manrope leading-[0] not-italic relative shrink-0 text-[clamp(25px,5vw,43px)] text-black text-center tracking-[-0.0133em] w-full">

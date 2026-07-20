@@ -5,8 +5,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import CtaLink from "@/components/CtaLink";
 
 /**
- * Waitlist congratulations page. The hero banner video plays inside a
- * rounded card inset from the viewport edges (same framing as the hero),
+ * Newsletter subscribe confirmation page. The hero banner video plays inside
+ * a rounded card inset from the viewport edges (same framing as the hero),
  * softened by the hero's white overlay, with the submitted email shown in
  * the centered message.
  */
@@ -49,14 +49,14 @@ export default function CongratsPage({ email }: { email: string }) {
             </svg>
           </div>
           <h1 className="font-manrope font-semibold mt-[28px] text-[clamp(34px,6vw,52px)] text-black tracking-[-0.05em]">
-            Congratulations!
+            You&apos;re subscribed!
           </h1>
           <p className="font-inter mt-[12px] text-[17px] sm:text-[19px] text-[#202020] tracking-[-0.02em]">
-            You&apos;re on the waitlist.
+            Thanks for joining our newsletter.
             {email && (
               <>
                 {" "}
-                We&apos;ll reach out to you at <span className="font-semibold">{email}</span> as soon as your spot opens up.
+                We&apos;ll send updates to <span className="font-semibold">{email}</span> whenever there&apos;s something new from Plucia.
               </>
             )}
           </p>
@@ -68,7 +68,7 @@ export default function CongratsPage({ email }: { email: string }) {
           <div className="flex gap-[14px] items-center mt-[40px] w-full max-w-[420px]">
             <div className="bg-[rgba(32,32,32,0.18)] flex-1 h-px" />
             <p className="font-inter text-[13px] text-[#606060] whitespace-nowrap">
-              or follow us on social media
+              get live updates on social too
             </p>
             <div className="bg-[rgba(32,32,32,0.18)] flex-1 h-px" />
           </div>

@@ -11,19 +11,7 @@ export default function Footer() {
     <footer className="bg-white relative w-full overflow-hidden">
       <img alt="" className="absolute inset-0 h-full w-full object-cover pointer-events-none" src="/assets/images/footer-gradient-bg.png" />
 
-      <div className="relative mx-auto flex gap-[40px] lg:gap-0 lg:h-[632px] max-w-[1440px] flex-col items-center justify-between pb-[24px] pt-[40px] px-[16px] sm:px-[40px]">
-        {/* giant background wordmark */}
-        <div className="absolute hidden lg:flex gap-[81.842px] items-center left-[167.75px] top-[210px]">
-          <div className="relative shrink-0 size-[272.807px]">
-            <img alt="" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/plucia-logo-xl.svg" />
-          </div>
-          <div className="flex flex-col items-start relative shrink-0">
-            <div className="flex flex-col font-geist font-medium justify-center leading-[0] relative shrink-0 text-[#202020] text-[272.807px] tracking-[-6.8202px] whitespace-nowrap">
-              <p className="leading-[381.93px]">Plucia</p>
-            </div>
-          </div>
-        </div>
-
+      <div className="relative mx-auto flex gap-[40px] max-w-[1440px] flex-col items-center justify-between pb-[24px] pt-[40px] px-[16px] sm:px-[40px]">
         {/* top card */}
         <div className="bg-white flex flex-col gap-[48px] lg:gap-[96px] items-start overflow-clip px-[20px] sm:px-[40px] py-[32px] relative rounded-[16px] shrink-0 w-full">
         <div className="flex flex-col md:flex-row gap-[32px] md:gap-[16px] items-start relative shrink-0 w-full">
@@ -56,8 +44,7 @@ export default function Footer() {
                 Resources
               </p>
               <div className="flex flex-col font-inter font-normal gap-[4px] items-start relative shrink-0 text-[16px] w-full">
-                <Link href="/login" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Login</Link>
-                <Link href="/signup" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Get Started</Link>
+                <Link href="/blog" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Blog</Link>
                 <Link href="/privacy" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Privacy Policy</Link>
                 <Link href="/terms" className="relative shrink-0 w-full transition-opacity duration-200 hover:opacity-60">Terms of Service</Link>
               </div>

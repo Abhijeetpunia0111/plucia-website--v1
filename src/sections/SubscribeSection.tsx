@@ -59,7 +59,7 @@ export default function SubscribeSection() {
           <div className="flex flex-col gap-[38px] items-center relative shrink-0 w-full">
             {/* email field — submits to /congratulations */}
             <WaitlistForm />
-            <AvatarGroup light />
+            <AvatarGroup light /><br/>
           </div>
         </div>
       </div>

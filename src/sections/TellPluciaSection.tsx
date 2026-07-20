@@ -278,9 +278,14 @@ export default function TellPluciaSection() {
 
           {/* channel bubbles */}
           <ChannelBubble left="0px" icon="/assets/icons/channel-lg-slack.svg" inset />
-          <ChannelBubble left="77.53px" icon="/assets/icons/channel-lg-gmail.svg" inset />
+          {/* real Slack mark — channel-lg-slack.svg above is mislabeled (it's
+              actually Salesforce artwork), so the genuine Slack logo lives here */}
+          <ChannelBubble left="77.53px" icon="/assets/logocom/slack-new-logo-logo.svg" />
           <ChannelBubble left="155.06px" icon="/assets/icons/channel-lg-whatsapp.svg" />
-          <ChannelBubble left="254.43px" icon="/assets/icons/channel-lg-gmail.svg" inset />
+          {/* channel-lg-gmail.svg is also mislabeled — it's a square LinkedIn
+              mark, so it renders full-bleed (no inset crop) instead of the
+              off-center inset meant for a wide icon, which was squashing it */}
+          <ChannelBubble left="254.43px" icon="/assets/icons/channel-lg-gmail.svg" />
           <ChannelBubble left="331.96px" icon="/assets/icons/channel-lg-messenger.svg" />
           <ChannelBubble left="409.49px" icon="/assets/icons/channel-lg-instagram.svg" />
 

@@ -58,7 +58,7 @@ export default function WaitlistForm() {
           <img alt="" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/mail-send-01.svg" />
         </div>
         <p className="font-manrope font-semibold leading-[normal] relative shrink-0 text-[#fefefe] text-[16px] tracking-[-0.8px] whitespace-nowrap">
-          Join Waitlist
+          Subscribe 
         </p>
         <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_4px_7px_0px_rgba(255,255,255,0.2)]" />
       </button>
