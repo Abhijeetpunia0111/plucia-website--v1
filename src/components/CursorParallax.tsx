@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useRef } from "react";
+import { createContext, useContext, useEffect, useRef } from "react";
 import {
   motion,
   useMotionValue,
@@ -49,15 +49,35 @@ export function ParallaxGroup({
     offset: ["start end", "end start"],
   });
 
+  // rAF-throttled pointer tracking: raw mousemove can fire far more often
+  // than the display refresh rate, and getBoundingClientRect() forces a
+  // synchronous layout read — doing that per-event (rather than at most
+  // once per animation frame) was the main source of scroll/hover jank here.
+  const rafRef = useRef<number | null>(null);
+  const pendingRef = useRef<{ x: number; y: number } | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
   return (
     <div
       ref={ref}
       className={className}
       onMouseMove={(e) => {
-        if (reduceMotion || !ref.current) return;
-        const r = ref.current.getBoundingClientRect();
-        nx.set(((e.clientX - r.left) / r.width) * 2 - 1);
-        ny.set(((e.clientY - r.top) / r.height) * 2 - 1);
+        if (reduceMotion) return;
+        pendingRef.current = { x: e.clientX, y: e.clientY };
+        if (rafRef.current != null) return;
+        rafRef.current = requestAnimationFrame(() => {
+          rafRef.current = null;
+          const pending = pendingRef.current;
+          if (!pending || !ref.current) return;
+          const r = ref.current.getBoundingClientRect();
+          nx.set(((pending.x - r.left) / r.width) * 2 - 1);
+          ny.set(((pending.y - r.top) / r.height) * 2 - 1);
+        });
       }}
       onMouseLeave={() => {
         nx.set(0);
@@ -104,7 +124,11 @@ export function ParallaxItem({
   const y = useTransform(() => cursorY.get() + scrollY.get());
 
   return (
-    <motion.div className={className} style={reduceMotion ? undefined : { x, y }} data-parallax-item>
+    <motion.div
+      className={`${className} ${reduceMotion ? "" : "will-change-transform"}`}
+      style={reduceMotion ? undefined : { x, y }}
+      data-parallax-item
+    >
       {children}
     </motion.div>
   );

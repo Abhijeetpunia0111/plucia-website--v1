@@ -73,7 +73,7 @@ export default function CongratsPage({ email }: { email: string }) {
             <div className="bg-[rgba(32,32,32,0.18)] flex-1 h-px" />
           </div>
           <div className="flex gap-[12px] items-center mt-[20px]">
-            <a href="#" aria-label="LinkedIn" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px] transition-transform duration-200 hover:-translate-y-0.5">
+            <a href="https://www.linkedin.com/company/plucia/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px] transition-transform duration-200 hover:-translate-y-0.5">
               <div className="relative shrink-0 size-[16px]">
                 <img alt="LinkedIn" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/linkedin-02.svg" />
               </div>
@@ -86,7 +86,7 @@ export default function CongratsPage({ email }: { email: string }) {
                 <img alt="Instagram" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/instagram-footer.svg" />
               </div>
             </a>
-            <a href="#" aria-label="X" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px] transition-transform duration-200 hover:-translate-y-0.5">
+            <a href="https://x.com/plucia_ai?s=11" target="_blank" rel="noopener noreferrer" aria-label="X" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px] transition-transform duration-200 hover:-translate-y-0.5">
               <div className="relative shrink-0 size-[16px]">
                 <img alt="X" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/new-twitter.svg" />
               </div>

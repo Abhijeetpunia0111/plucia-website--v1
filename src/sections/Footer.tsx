@@ -92,7 +92,7 @@ export default function Footer() {
                 <img alt="Mail" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/mail-01.svg" />
               </div>
             </a>
-            <a href="#" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px]">
+            <a href="https://www.linkedin.com/company/plucia/" target="_blank" rel="noopener noreferrer" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px]">
               <div className="relative shrink-0 size-[16px]">
                 <img alt="LinkedIn" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/linkedin-02.svg" />
               </div>
@@ -105,7 +105,7 @@ export default function Footer() {
                 <img alt="Instagram" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/instagram-footer.svg" />
               </div>
             </a>
-            <a href="#" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px]">
+            <a href="https://x.com/plucia_ai?s=11" target="_blank" rel="noopener noreferrer" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px]">
               <div className="relative shrink-0 size-[16px]">
                 <img alt="X" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/new-twitter.svg" />
               </div>
