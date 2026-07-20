@@ -25,7 +25,7 @@ const WIRES = [
 const APP_ICONS = [
   { left: "left-[65.13px]", top: "top-[554.63px]", icon: "/assets/icons/instagram.svg", size: "size-[31.875px]", inset: false },
   { left: "left-[177.13px]", top: "top-[438.23px]", icon: "/assets/icons/int-icon-1.svg", size: "size-[31.875px]", inset: false },
-  { left: "left-[53.8px]", top: "top-[291.3px]", icon: "/assets/icons/meta.svg", size: "size-[40.5px]", inset: false },
+  { left: "left-[53.8px]", top: "top-[291.3px]", icon: "/assets/logocom/slack-new-logo-logo.svg", size: "size-[31.875px]", inset: false },
   { left: "left-[239.57px]", top: "top-[339.11px]", icon: "/assets/icons/int-icon-2.svg", size: "size-[31.875px]", inset: false },
   { left: "left-[1066.13px]", top: "top-[551.27px]", icon: "/assets/icons/int-icon-3.svg", size: "size-[31.875px]", inset: false },
   { left: "left-[1098.68px]", top: "top-[427.09px]", icon: "/assets/icons/int-icon-slack.svg", size: "size-[31.876px]", inset: true },
