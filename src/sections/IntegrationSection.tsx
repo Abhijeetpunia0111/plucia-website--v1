@@ -106,7 +106,7 @@ export default function IntegrationSection() {
         </div>
         <p className="font-manrope font-semibold leading-[0] min-w-full relative shrink-0 text-[48px] text-black text-center tracking-[-2.4px] w-[min-content]">
           <span className="leading-[normal]">Everything Your Team Needs in </span>
-          <span className="font-msmadi font-normal leading-[normal] not-italic">One Platform</span>
+          <span className="font-msmadi font-normal leading-[normal] not-italic">One Inbox</span>
         </p>
         <p className="font-inter font-normal leading-[normal] not-italic relative shrink-0 text-[#202020] text-[21px] text-center tracking-[-1.05px] w-[558px]">
           Type a simple instruction in natural language, and Plucia instantly understands your intent.
