@@ -83,15 +83,21 @@ html.lenis body {
     transform-origin: 50% 50%;
   }
 
+  /* Single small drop-shadow only: the pulse animates background-position,
+     which repaints every frame, and each extra/wider blur multiplies that
+     paint cost (8+ pulses run at once in the integration section). The wider
+     halo is baked into the gradient's soft edges instead. */
   .pulse-glow {
     background-image: linear-gradient(
       to top,
       transparent 0%,
-      rgba(249, 115, 22, 0.95) 22%,
+      rgba(249, 115, 22, 0.35) 12%,
+      rgba(249, 115, 22, 0.95) 24%,
       #ffffff 38%,
       #ffffff 50%,
-      rgba(249, 115, 22, 0.95) 66%,
-      transparent 88%,
+      rgba(249, 115, 22, 0.95) 64%,
+      rgba(249, 115, 22, 0.35) 78%,
+      transparent 92%,
       transparent 100%
     );
     background-repeat: no-repeat;
@@ -100,7 +106,7 @@ html.lenis body {
     -webkit-mask-repeat: no-repeat;
     mask-size: 100% 100%;
     -webkit-mask-size: 100% 100%;
-    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 1)) drop-shadow(0 0 14px rgba(249, 115, 22, 0.75));
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.9));
     animation: pulse-travel-up 3.6s ease-in-out infinite;
   }
 
@@ -111,11 +117,13 @@ html.lenis body {
     background-image: linear-gradient(
       to right,
       transparent 0%,
-      rgba(249, 115, 22, 0.95) 22%,
+      rgba(249, 115, 22, 0.35) 12%,
+      rgba(249, 115, 22, 0.95) 24%,
       #ffffff 38%,
       #ffffff 50%,
-      rgba(249, 115, 22, 0.95) 66%,
-      transparent 88%,
+      rgba(249, 115, 22, 0.95) 64%,
+      rgba(249, 115, 22, 0.35) 78%,
+      transparent 92%,
       transparent 100%
     );
     background-size: 165% 100%;

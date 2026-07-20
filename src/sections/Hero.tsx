@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import AvatarGroup from "@/components/AvatarGroup";
 import DistortText from "@/components/DistortText";
@@ -33,6 +33,23 @@ export default function Hero() {
     return () => window.removeEventListener("resize", updateBounds);
   }, []);
 
+  // The background video keeps decoding while scrolled far offscreen —
+  // pause it there so the rest of the page scrolls without that cost.
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) video.play().catch(() => {});
+        else video.pause();
+      },
+      { rootMargin: "200px" }
+    );
+    io.observe(video);
+    return () => io.disconnect();
+  }, []);
+
   const backdropInitial = {
     width: "min(300px, calc(100vw - 32px))",
     height: 40,
@@ -61,7 +78,7 @@ export default function Hero() {
           if (bounds && !reduceMotion) setHasEntered(true);
         }}
       >
-        <video data-motion-section="hero" className="absolute inset-0 h-full w-full object-cover pointer-events-none" src="/assets/video/background video.mp4" autoPlay loop muted playsInline preload="auto" />
+        <video ref={videoRef} data-motion-section="hero" className="absolute inset-0 h-full w-full object-cover pointer-events-none" src="/assets/video/background video.mp4" autoPlay loop muted playsInline preload="auto" />
         <div aria-hidden className="absolute inset-0 bg-[#fefefe]/60 pointer-events-none" />
       </motion.div>
 

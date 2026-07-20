@@ -51,7 +51,7 @@ export default function IntegrationSection() {
         </div>
         <p className="font-manrope font-semibold leading-[0] relative shrink-0 text-[clamp(28px,7vw,48px)] text-black text-center tracking-[-0.05em] w-full">
           <span className="leading-[normal]"><DistortText text="Everything Your Team Needs in" /> </span>
-          <span className="font-msmadi font-normal leading-[normal] not-italic">One Platform</span>
+          <span className="font-msmadi font-normal leading-[normal] not-italic">One Inbox</span>
         </p>
         <p className="font-inter font-normal leading-[normal] not-italic relative shrink-0 text-[#202020] text-[16px] text-center tracking-[-0.05em] w-full max-w-[558px]">
           Type a simple instruction in natural language, and Plucia instantly understands your intent.
