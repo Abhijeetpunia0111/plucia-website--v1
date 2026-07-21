@@ -82,14 +82,6 @@ export default function ContactPage() {
                 </p>
                 <div className="flex flex-col gap-[14px] font-inter text-[15px] text-[#202020] w-full">
                   <p>
-                    <span className="text-[#606060]">Email: </span>
-                    <a href="mailto:hello@plucia.com" className="font-medium hover:underline">hello@plucia.com</a>
-                  </p>
-                  <p>
-                    <span className="text-[#606060]">Phone: </span>
-                    <a href="tel:+19999999999" className="font-medium hover:underline">+1 (999) 999-99-99</a>
-                  </p>
-                  <p>
                     <span className="text-[#606060]">Address: </span>
                     <span className="font-medium">1901 Thornridge Cir. Shiloh, Hawaii 81063</span>
                   </p>

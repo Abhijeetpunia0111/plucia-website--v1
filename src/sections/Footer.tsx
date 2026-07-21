@@ -66,19 +66,10 @@ export default function Footer() {
               </div>
               <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_0.8px_0px_0px_rgba(255,255,255,0.16)]" />
             </Link>
-            <div className="flex flex-col font-inter font-semibold items-end leading-[1.3] not-italic relative shrink-0 text-[#1b1819] text-[12px] whitespace-nowrap">
-              <p className="relative shrink-0">+1 (999) 999-99-99</p>
-              <p className="relative shrink-0">info@logoipsum.com</p>
-            </div>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row gap-[24px] sm:gap-[16px] items-start sm:items-center relative shrink-0 w-full">
           <div className="flex w-full sm:w-auto sm:flex-[1_0_0] gap-[8px] items-center sm:min-w-px relative">
-            <a href="#" className="bg-[#1b1819] flex flex-col items-center justify-center relative rounded-[40px] shrink-0 size-[40px]">
-              <div className="relative shrink-0 size-[18px]">
-                <img alt="Mail" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/mail-01.svg" />
-              </div>
-            </a>
             <a href="https://www.linkedin.com/company/plucia/" target="_blank" rel="noopener noreferrer" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px]">
               <div className="relative shrink-0 size-[16px]">
                 <img alt="LinkedIn" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/linkedin-02.svg" />
