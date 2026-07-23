@@ -75,9 +75,6 @@ export default function Footer() {
                 <img alt="LinkedIn" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/linkedin-02.svg" />
               </div>
             </a>
-            <a href="#" className="relative shrink-0 size-[40px]">
-              <img alt="WhatsApp" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/social-whatsapp.svg" />
-            </a>
             <a href="#" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px]">
               <div className="relative shrink-0 size-[16px]">
                 <img alt="Instagram" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/instagram-footer.svg" />
@@ -88,12 +85,6 @@ export default function Footer() {
                 <img alt="X" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/new-twitter.svg" />
               </div>
             </a>
-          </div>
-          <div className="flex items-start justify-start sm:justify-end relative shrink-0 w-auto sm:w-[442px]">
-            <div className="font-inter font-semibold leading-[0] not-italic relative shrink-0 text-[#1b1819] text-[12px] whitespace-nowrap">
-              <p className="leading-[1.3] mb-0">1901 Thornridge Cir. Shiloh,</p>
-              <p className="leading-[1.3]">Hawaii 81063</p>
-            </div>
           </div>
         </div>
       </div>

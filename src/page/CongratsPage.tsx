@@ -78,9 +78,6 @@ export default function CongratsPage({ email }: { email: string }) {
                 <img alt="LinkedIn" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/linkedin-02.svg" />
               </div>
             </a>
-            <a href="#" aria-label="WhatsApp" className="relative shrink-0 size-[40px] transition-transform duration-200 hover:-translate-y-0.5">
-              <img alt="WhatsApp" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/social-whatsapp.svg" />
-            </a>
             <a href="#" aria-label="Instagram" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px] transition-transform duration-200 hover:-translate-y-0.5">
               <div className="relative shrink-0 size-[16px]">
                 <img alt="Instagram" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/instagram-footer.svg" />

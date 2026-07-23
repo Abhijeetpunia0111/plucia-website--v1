@@ -350,7 +350,7 @@ export default function InsightsSection() {
           <span className="font-bold leading-[normal]"><DistortText text="Important leads insights" baseWeight={700} weightShift={100} /></span>
         </p>
         <p className="font-inter font-normal leading-[normal] not-italic relative shrink-0 text-[#606060] text-[12px] sm:text-[16px] text-center tracking-[-0.05em] w-full">
-          Before every meeting, Plucia builds a complete intelligence brief by combining conversations, CRM activity, LinkedIn profiles, company data, buying signals, recent news, and behavioral insights—so your team walks in prepared to close.
+          Before every meeting, Plucia builds a complete intelligence brief by combining conversations, CRM activity, LinkedIn profiles, company data, buying signals, recent news, and behavioral insights so your team walks in prepared to close.
         </p>
       </div>
 

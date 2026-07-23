@@ -23,7 +23,7 @@ export default function SubscribeSection() {
               </div>
             </div>
           </div>
-        </div>
+        </div>work just like an
       </div>
       <div className="-translate-x-1/2 -translate-y-1/2 absolute flex h-[651.503px] items-center justify-center left-[calc(50%-370.29px)] top-[calc(50%-20.94px)] w-[889.301px]">
         <div className="-rotate-90 flex-none">

@@ -41,7 +41,7 @@ export default function TellPluciaSection() {
           <DistortText text="Just Tell Plucia What You Need." />
         </p>
         <p className="font-inter font-normal relative shrink-0 text-[17px] sm:text-[21px] text-[#202020] tracking-[-0.05em] w-full">
-          Type a simple instruction in natural language, and Plucia instantly understands your intent, connects every relevant channel, gathers customer context, and begins executing the work—just like an experienced business operator.
+          Type a simple instruction in natural language, and Plucia instantly understands your intent, connects every relevant channel, gathers customer context, and begins executing the work just like an experienced business operator.
         </p>
         <CtaLink>Improve your productivity now</CtaLink>
       </div>

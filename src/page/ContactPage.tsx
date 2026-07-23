@@ -73,30 +73,17 @@ export default function ContactPage() {
               </h1>
 
               <p className="font-inter font-normal text-[16px] sm:text-[17px] text-[#606060] tracking-[-0.02em] w-full">
-                Have questions or need a personalized walkthrough? We&apos;d love to hear from you — whether it&apos;s onboarding, integrations, or how Plucia fits into your sales process, our team is ready to help.
+                Have questions or need a personalized walkthrough? We&apos;d love to hear from you whether it&apos;s onboarding, integrations, or how Plucia fits into your sales process, our team is ready to help.
               </p>
 
               <div className="flex flex-col gap-[20px] mt-[16px] w-full">
-                <p className="font-inter font-medium opacity-60 text-[10px] text-[#202020] tracking-[0.4px] uppercase">
-                  Get in touch
-                </p>
-                <div className="flex flex-col gap-[14px] font-inter text-[15px] text-[#202020] w-full">
-                  <p>
-                    <span className="text-[#606060]">Address: </span>
-                    <span className="font-medium">1901 Thornridge Cir. Shiloh, Hawaii 81063</span>
-                  </p>
-                </div>
-
-                <div className="flex flex-col gap-[12px] mt-[8px]">
+                <div className="flex flex-col gap-[12px]">
                   <p className="font-inter font-medium text-[#606060] text-[13px]">Follow us</p>
                   <div className="flex gap-[10px] items-center">
                     <a href="https://www.linkedin.com/company/plucia/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px] transition-transform duration-200 hover:-translate-y-0.5">
                       <div className="relative shrink-0 size-[16px]">
                         <img alt="LinkedIn" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/linkedin-02.svg" />
                       </div>
-                    </a>
-                    <a href="#" aria-label="WhatsApp" className="relative shrink-0 size-[40px] transition-transform duration-200 hover:-translate-y-0.5">
-                      <img alt="WhatsApp" className="absolute block inset-0 max-w-none size-full" src="/assets/icons/social-whatsapp.svg" />
                     </a>
                     <a href="#" aria-label="Instagram" className="bg-[#1b1819] flex items-center justify-center relative rounded-[40px] shrink-0 size-[40px] transition-transform duration-200 hover:-translate-y-0.5">
                       <div className="relative shrink-0 size-[16px]">

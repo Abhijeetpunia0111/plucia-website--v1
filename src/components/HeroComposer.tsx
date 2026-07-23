@@ -122,7 +122,10 @@ export default function HeroComposer() {
                 <p className="px-[10px] pt-[6px] pb-[8px] font-inter font-medium text-[11px] uppercase tracking-[0.4px] text-[#9a9a9a]">
                   Switch channel
                 </p>
-                <div className="no-scrollbar flex flex-col gap-[2px] max-h-[133px] overflow-y-auto overflow-x-hidden">
+                <div
+                  data-lenis-prevent
+                  className="no-scrollbar flex flex-col gap-[2px] max-h-[133px] overflow-y-auto overflow-x-hidden"
+                >
                   {CHANNELS.map((c) => (
                     <button
                       key={c.id}
